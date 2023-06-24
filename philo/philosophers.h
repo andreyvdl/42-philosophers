@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 16:59:34 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 17:37:53 by adantas-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
@@ -18,6 +6,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <stdint.h>
 # include <sys/time.h> // gettimeofday
 
 /* Define =================================================================== */
@@ -48,21 +37,21 @@
  * @brief Philosopher information;
  * 
  * @param id Philosopher number, id is always bigger than 0;
- * @param life_time Time to die;
- * @param eat_time Time to eat;
- * @param sleep_time Time to sleep;
+ * @param life_time Time for the philo die;
+ * @param eat_time Time that the philo takes to drop the forks eat;
+ * @param sleep_time Time that the philo is sleeping;
  * @param meals Number of meals;
  * @param last_meal last time philo ate;
  */
 typedef struct s_philo
 {
-	uint	id;
-	time_t	life_time;
-	time_t	eat_time;
-	time_t	sleep_time;
-	uint	meals;
-	time_t	last_meal;
-}			t_philo;
+	uint16_t	id;
+	time_t		life_time;
+	time_t		eat_time;
+	time_t		sleep_time;
+	uint16_t	meals;
+	time_t		last_meal;
+}	t_philo;
 
 /**
  * @brief Smaller version of pthread_mutex_t;

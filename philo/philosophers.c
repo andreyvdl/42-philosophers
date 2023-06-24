@@ -1,29 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 17:26:04 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/22 11:14:09 by adantas-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "./philosophers.h"
 
 /*
 todo: get argv as input - nbr_philos lifetime launch_time amimir [meals]
-todo: learn about pthreads and mutex in C
+* learn about pthreads and mutex in C - on test.c
 todo: read pdf better
-todo: learn basic math to convert time
+* learn basic math to convert time - μs to ms is (μs / 1000)
 !: time_t is a signed long int
 ?: optimization
 */
 
 static void	select_simulation(int argc, char *argv[])
 {
-	if (argc == 5)
+	if (argc == 4)
 		inifinite_sim(argv);
 	else
 		finite_sim(argv);
@@ -31,7 +19,8 @@ static void	select_simulation(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	if (argc > 4 && argc < 7)
+	--argc;
+	if (argc > 3 && argc < 6)
 		select_simulation(argc, argv + 1);
 	else
 	{
