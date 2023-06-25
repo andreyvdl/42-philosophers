@@ -12,7 +12,7 @@ todo: read pdf better
 static void	select_simulation(int argc, char *argv[])
 {
 	if (argc == 4)
-		inifinite_sim(argv);
+		infinite_sim(argv);
 	else
 		finite_sim(argv);
 }

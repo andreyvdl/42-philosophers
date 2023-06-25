@@ -6,16 +6,21 @@
 # include <string.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <sys/time.h>
+
 # include <stdint.h>
-# include <sys/time.h> // gettimeofday
+# include <stdbool.h>
 
 /* Define =================================================================== */
 
 /* Macros ------------------------------------------------------------------- */
 
+# define NIL 0x0
 # define MAX_PHILOS 200
+# define SIZE_MAX_LEN 20
+# define SIZE_MAX_STR "18446744073709551615"
 
-/* Text --------------------------------------------------------------------- */
+/* Philo text --------------------------------------------------------------- */
 
 # define PHILO_EAT "\e[1;32m %d %d is eating\n\e[0m"
 # define PHILO_RIP "\e[1;31m %d %d died\n\e[0m"
@@ -30,6 +35,8 @@
 \e[1;4;31mnumber_of_philosophers\e[0m \e[1;4;31mtime_to_die\e[0m \
 \e[1;4;31mtime_to_eat\e[0m \e[1;4;31mtime_to_sleep\e[0m \
 [\e[1;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n"
+# define ERR_INPUT_WRONG "\e[1;31mphilo: input is wrong `"
+# define CLOSE_ERR_INPUT "`\e[0m\n"
 
 /* Types ==================================================================== */
 
@@ -57,5 +64,12 @@ typedef struct s_philo
  * @brief Smaller version of pthread_mutex_t;
  */
 typedef pthread_mutex_t	t_pth_tex;
+
+/* Functions ================================================================ */
+
+bool	values_are_valid(char *argv[]);
+void	finite_sim(char *argv[]);
+void	infinite_sim(char *argv[]);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif

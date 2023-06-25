@@ -6,16 +6,19 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/06/19 22:17:39 by adantas-         ###   ########.fr        #
+#    Updated: 2023/06/25 01:07:16 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -g3
-SRCS=philosophers.c
+SRCS=philosophers.c \
+	${addprefix sources/, finite_simulation.c infinite_simulation.c validator.c} \
+	${addprefix utilities/, ft_putstr_fd.c}
 OBJS=${SRCS:.c=.o}
 HEADER=philosophers.h
+SHELL:=/bin/bash
 
 # COLORS ======================================================================
 RED=\033[31m
@@ -25,7 +28,6 @@ BLUE=\033[34m
 MAGENTA=\033[35m
 CYAN=\033[36m
 RESET=\033[0m
-CLRLINE=\033[2K\r
 
 # RULES =======================================================================
 
@@ -44,9 +46,8 @@ ${NAME}: ${OBJS}
 	@exit 0
 
 %.o: %.c
-	@printf "${YELLOW}Compiling ${CYAN}$<${RESET}"
-	@cc ${FLAGS} -I. -c $<
-	@printf "${CLRLINE}"
+	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
+	@cc ${FLAGS} -I. -c $< -o $@
 
 fclean: clean
 	@rm -fr ${NAME}
@@ -54,11 +55,12 @@ fclean: clean
 
 clean:
 	@${foreach file, ${OBJS}, \
-		printf "${CLRLINE}"; \
-		printf "${YELLOW}Removing object file ${MAGENTA}${notdir ${file}}${RESET}"; \
-		rm -fr ${file}; \
+		if [ -f ${file} ]; then \
+			printf "${YELLOW}Removing object file: ${MAGENTA}${notdir ${file}}${RESET}\n"; \
+			rm -fr ${file}; \
+		fi; \
 	}
-	@printf "\n${YELLOW}Objects removed!${RESET}\n"
+	@printf "${YELLOW}Objects removed!${RESET}\n"
 
 re: fclean ${NAME}
 
