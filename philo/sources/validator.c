@@ -5,11 +5,11 @@ static bool	bigger_than_max(char *arg)
 	size_t	index;
 
 	index = 0;
-	while (SIZE_MAX_STR[index] != '\0')
+	while (SSIZE_MAX_STR[index] != '\0')
 	{
-		if (*arg > SIZE_MAX_STR[index])
+		if (*arg > SSIZE_MAX_STR[index])
 			return (true);
-		else if (*arg < SIZE_MAX_STR[index])
+		else if (*arg < SSIZE_MAX_STR[index])
 			break ;
 		++index;
 		++arg;
@@ -26,9 +26,9 @@ static bool	number_too_big(char **arg)
 		return (true);
 	while ((*arg)[size] >= '0' && (*arg)[size] <= '9')
 		++size;
-	if (size > SIZE_MAX_LEN)
+	if (size > SSIZE_MAX_LEN)
 		return (true);
-	else if (size == SIZE_MAX_LEN && bigger_than_max(*arg))
+	else if (size == SSIZE_MAX_LEN && bigger_than_max(*arg))
 		return (true);
 	while (**arg >= '0' && **arg <= '9')
 		++(*arg);

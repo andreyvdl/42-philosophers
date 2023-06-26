@@ -17,8 +17,9 @@
 
 # define NIL 0x0
 # define MAX_PHILOS 200
-# define SIZE_MAX_LEN 20
-# define SIZE_MAX_STR "18446744073709551615"
+# define SSIZE_LIMIT 922337203685477
+# define SSIZE_MAX_LEN 19
+# define SSIZE_MAX_STR "9223372036854775807"
 
 /* Philo text --------------------------------------------------------------- */
 
@@ -35,41 +36,30 @@
 \e[1;4;31mnumber_of_philosophers\e[0m \e[1;4;31mtime_to_die\e[0m \
 \e[1;4;31mtime_to_eat\e[0m \e[1;4;31mtime_to_sleep\e[0m \
 [\e[1;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n"
-# define ERR_INPUT_WRONG "\e[1;31mphilo: input is wrong `"
+# define ERR_INPUT_WRONG "\e[1;31mphilo: this input is wrong `"
 # define CLOSE_ERR_INPUT "`\e[0m\n"
 
 /* Types ==================================================================== */
-
-/**
- * @brief Philosopher information;
- * 
- * @param id Philosopher number, id is always bigger than 0;
- * @param life_time Time for the philo die;
- * @param eat_time Time that the philo takes to drop the forks eat;
- * @param sleep_time Time that the philo is sleeping;
- * @param meals Number of meals;
- * @param last_meal last time philo ate;
- */
-typedef struct s_philo
-{
-	uint16_t	id;
-	time_t		life_time;
-	time_t		eat_time;
-	time_t		sleep_time;
-	uint16_t	meals;
-	time_t		last_meal;
-}	t_philo;
 
 /**
  * @brief Smaller version of pthread_mutex_t;
  */
 typedef pthread_mutex_t	t_pth_tex;
 
+typedef struct s_test {
+	ssize_t	nbr_philos;
+	ssize_t	lifetime;
+	ssize_t	launch_time;
+	ssize_t	sleep_time;
+	ssize_t	meals;
+}	t_test;
+
 /* Functions ================================================================ */
 
+ssize_t	ft_atol(const char *str);
 bool	values_are_valid(char *argv[]);
-void	finite_sim(char *argv[]);
-void	infinite_sim(char *argv[]);
 void	ft_putstr_fd(char *s, int fd);
+void	infinite_sim(char *argv[]);
+void	finite_sim(char *argv[]);
 
 #endif
