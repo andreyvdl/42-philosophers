@@ -23,10 +23,6 @@ int	main(int argc, char *argv[])
 	if (argc > 3 && argc < 6)
 		select_simulation(argc, argv + 1);
 	else
-	{
-		write(STDERR_FILENO, ERR_NBR_ARGS, sizeof(ERR_NBR_ARGS));
-		write(STDERR_FILENO, EXEMPLE_INPUT, sizeof(EXEMPLE_INPUT));
-		exit(22);
-	}
+		argc_error();
 	exit(0);
 }

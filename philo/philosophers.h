@@ -16,6 +16,7 @@
 /* Macros ------------------------------------------------------------------- */
 
 # define NIL 0x0
+# define ONE_MS 1000
 # define MAX_PHILOS 200
 # define SSIZE_LIMIT 922337203685477
 # define SSIZE_MAX_LEN 19
@@ -33,11 +34,12 @@
 
 # define ERR_NBR_ARGS "\e[1;31mphilo: wrong number of arguments\e[0m\n"
 # define EXEMPLE_INPUT "usage: \e[1;32m./philo\e[0m \
-\e[1;4;31mnumber_of_philosophers\e[0m \e[1;4;31mtime_to_die\e[0m \
-\e[1;4;31mtime_to_eat\e[0m \e[1;4;31mtime_to_sleep\e[0m \
-[\e[1;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n"
+\e[1;4;3;31mnumber_of_philosophers\e[0m \e[1;4;3;31mtime_to_die\e[0m \
+\e[1;4;3;31mtime_to_eat\e[0m \e[1;4;3;31mtime_to_sleep\e[0m \
+[\e[1;4;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n"
 # define ERR_INPUT_WRONG "\e[1;31mphilo: this input is wrong `"
 # define CLOSE_ERR_INPUT "`\e[0m\n"
+# define ERR_MALLOC "\e[1;31mphilo: malloc error\e[0m\n"
 
 /* Types ==================================================================== */
 
@@ -58,8 +60,12 @@ typedef struct s_test {
 
 ssize_t	ft_atol(const char *str);
 bool	values_are_valid(char *argv[]);
+
+void	value_error(char *arg, t_test *test);
 void	ft_putstr_fd(char *s, int fd);
 void	infinite_sim(char *argv[]);
 void	finite_sim(char *argv[]);
+void	malloc_error(void);
+void	argc_error(void);
 
 #endif
