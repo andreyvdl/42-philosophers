@@ -1,4 +1,4 @@
-#include "../philosophers.h"
+#include "../include/philosophers.h"
 
 void	finite_sim(char *argv[])
 {

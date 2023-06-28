@@ -1,6 +1,6 @@
-#include "./philosophers.h"
+#include "include/philosophers.h"
 
-/* explicação
+/* explicação 
 * pthread_create: cria uma thread e a manda para a função;
 
 * pthread_detach:
@@ -31,7 +31,7 @@
 *	o tempo é baseado em 01/jan/1970 00:00:00 UTC;
 */
 
-/* create e join
+/* create e join 
 void	*teste(void *arg)
 {
 	printf("teste\n");
@@ -48,7 +48,7 @@ int	main(void)
 }
 */
 
-/* thread id
+/* thread id 
 void	*teste(void *arg)
 {
 	printf("%d\n", ((int *)arg)[0]);
@@ -68,7 +68,7 @@ int	main(void)
 }
 */
 
-/* mutex
+/* mutex 
 typedef struct s_tester {
 	pthread_mutex_t	mutex;
 	unsigned int	garfos;
@@ -104,13 +104,40 @@ int	main(void)
 }
 */
 
-/* gettimeofday
+/* gettimeofday 
 int	main(void)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	printf("%ld %ld\n", time.tv_sec, time.tv_usec);
+	printf("%ldsec %ldus\n", time.tv_sec, time.tv_usec);
+	printf("%ldsec->ms %ldus->ms\n", time.tv_sec * 1000, time.tv_usec / 1000);
+	return (0);
+}
+*/
+
+/* test 
+typedef struct s_tester {
+	time_t	*a;
+}	t_teste;
+
+static void	ponteiro(t_teste *teste)
+{
+	struct timeval	time;
+	ssize_t			ms;
+
+	gettimeofday(&time, NULL);
+	ms = time.tv_usec / 1000;
+	teste->a = &ms;
+}
+
+int	main(void)
+{
+	t_teste	teste;
+
+	teste = (t_teste){NULL};
+	ponteiro(&teste);
+	printf("%ld\n", *teste.a);
 	return (0);
 }
 */

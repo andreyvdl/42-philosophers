@@ -1,4 +1,4 @@
-#include "../philosophers.h"
+#include "../../include/philosophers.h"
 
 static void	fixed_values(t_test *test, char *arg)
 {
