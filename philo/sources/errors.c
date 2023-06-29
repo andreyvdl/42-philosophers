@@ -1,8 +1,7 @@
 #include "../include/philosophers.h"
 
-void	value_error(char *arg, t_test *test)
+void	value_error(char *arg)
 {
-	free(test);
 	write(STDERR_FILENO, ERR_INPUT_WRONG, sizeof(ERR_INPUT_WRONG));
 	ft_putstr_fd(arg, STDERR_FILENO);
 	write(STDERR_FILENO, CLOSE_ERR_INPUT, sizeof(CLOSE_ERR_INPUT));

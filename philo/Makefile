@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/06/27 14:55:12 by adantas-         ###   ########.fr        #
+#    Updated: 2023/06/29 17:41:56 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -g3
 SRCS=philosophers.c \
-	${addprefix sources/, finite_simulation.c infinite_simulation.c validator.c errors.c set_values_inf.c} \
+	${addprefix sources/, validator.c errors.c} \
+	${addprefix sources/infinite/, infinite_simulation.c} \
 	${addprefix utilities/, ft_putstr_fd.c ft_atol.c}
 OBJS=${SRCS:.c=.o}
 HEADER=philosophers.h

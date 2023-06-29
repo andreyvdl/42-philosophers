@@ -16,6 +16,7 @@
 /* Macros ------------------------------------------------------------------- */
 
 # define NIL 0x0
+# define TIME_MAX 922337203685477
 # define MAX_PHILOS 200
 # define SSIZE_MAX_LEN 19
 # define SSIZE_MAX_STR "9223372036854775807"
@@ -67,11 +68,13 @@ typedef enum e_philo_state {
  * @param state The philosopher's state;
  * @param philo_forks The number of forks the philosopher has;
  * @param philo_meals The number of meals the philosopher has eaten;
+ * @param last_meal The time when the philosopher last ate;
  */
 typedef struct s_philo_private {
 	t_state	state;
 	uint8_t	philo_forks;
 	uint8_t	philo_meals;
+	time_t	last_meal;
 }	t_philo_prv;
 
 /**
@@ -82,8 +85,9 @@ typedef struct s_philo_private {
  * @param *state_mutex The state mutex;
  * @param private The philosopher's private data;
  * @param *start_time The time when the simulation started;
- * @param id The philosopher's id;
+ * @param nbr_of_philos The number of philosophers;
  * @param table_forks The number of forks on the table;
+ * @param id The philosopher's id;
  */
 typedef struct s_philo_public {
 	t_pth_mutex	*forks_mutex;
@@ -91,8 +95,12 @@ typedef struct s_philo_public {
 	t_pth_mutex	*state_mutex;
 	t_philo_prv	private;
 	time_t		*start_time;
-	uint8_t		id;
+	ssize_t		*lifetime;
+	ssize_t		*launch_time;
+	ssize_t		*snooze_time;
+	uint8_t		nbr_of_philos;
 	uint8_t		table_forks;
+	uint8_t		id;
 }	t_philo_pub;
 
 /* Functions ================================================================ */
@@ -100,11 +108,10 @@ typedef struct s_philo_public {
 ssize_t	ft_atol(const char *str);
 bool	values_are_valid(char *argv[]);
 
-void	set_values(char *argv[], t_test *test);
-void	value_error(char *arg, t_test *test);
 void	ft_putstr_fd(char *s, int fd);
 void	infinite_sim(char *argv[]);
 void	finite_sim(char *argv[]);
+void	value_error(char *arg);
 void	malloc_error(void);
 void	argc_error(void);
 

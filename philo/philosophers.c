@@ -14,7 +14,8 @@ static void	select_simulation(int argc, char *argv[])
 	if (argc == 4)
 		infinite_sim(argv);
 	else
-		finite_sim(argv);
+		(void)argc;
+		// finite_sim(argv);
 }
 
 int	main(int argc, char *argv[])

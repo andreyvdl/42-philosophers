@@ -116,7 +116,7 @@ int	main(void)
 }
 */
 
-/* test 
+/* ponteiro 
 typedef struct s_tester {
 	time_t	*a;
 }	t_teste;
@@ -141,3 +141,4 @@ int	main(void)
 	return (0);
 }
 */
+
