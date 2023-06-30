@@ -73,7 +73,7 @@ typedef enum e_philo_state {
 typedef struct s_philo_private {
 	t_state	state;
 	uint8_t	philo_forks;
-	uint8_t	philo_meals;
+	size_t	philo_meals;
 	time_t	last_meal;
 }	t_philo_prv;
 
@@ -84,30 +84,35 @@ typedef struct s_philo_private {
  * @param *print_mutex The print mutex;
  * @param *state_mutex The state mutex;
  * @param private The philosopher's private data;
+ * @param *lifetime The time the philosopher has to eat;
+ * @param *lunch_time The time that the philo has to finish eating;
+ * @param *snooze_time The time that the philo has to sleep;
  * @param *start_time The time when the simulation started;
- * @param nbr_of_philos The number of philosophers;
  * @param table_forks The number of forks on the table;
  * @param id The philosopher's id;
+ * @param nbr_of_philos The number of philosophers;
  */
 typedef struct s_philo_public {
 	t_pth_mutex	*forks_mutex;
 	t_pth_mutex	*print_mutex;
 	t_pth_mutex	*state_mutex;
 	t_philo_prv	private;
-	time_t		*start_time;
 	ssize_t		*lifetime;
-	ssize_t		*launch_time;
+	ssize_t		*lunch_time;
 	ssize_t		*snooze_time;
-	uint8_t		nbr_of_philos;
-	uint8_t		table_forks;
+	time_t		*start_time;
+	uint8_t		*table_forks;
 	uint8_t		id;
+	uint8_t		nbr_of_philos;
 }	t_philo_pub;
 
 /* Functions ================================================================ */
 
-ssize_t	ft_atol(const char *str);
 bool	values_are_valid(char *argv[]);
+ssize_t	ft_atol(const char *str);
+time_t	get_time_ms(void);
 
+void	start_simulation(t_philo_pub philos[]);
 void	ft_putstr_fd(char *s, int fd);
 void	infinite_sim(char *argv[]);
 void	finite_sim(char *argv[]);

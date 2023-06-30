@@ -1,7 +1,7 @@
 #include "include/philosophers.h"
 
 /*
-todo: get argv as input - nbr_philos lifetime launch_time amimir [meals]
+todo: get argv as input - nbr_philos lifetime lunch_time amimir [meals]
 * learn about pthreads and mutex in C - on test.c
 todo: read pdf better
 * learn basic math to convert time - μs to ms is (μs / 1000)
