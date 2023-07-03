@@ -112,6 +112,7 @@ bool	values_are_valid(char *argv[]);
 ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
 
+void	set_philos_infinite(t_philo_pub philos[], char *argv[]);
 void	start_simulation(t_philo_pub philos[]);
 void	ft_putstr_fd(char *s, int fd);
 void	infinite_sim(char *argv[]);

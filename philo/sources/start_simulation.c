@@ -1,4 +1,4 @@
-#include "../include/philosophers.h"
+#include "philosophers.h"
 
 static void	function_name(t_philo_pub philos[], uint8_t nbr_of_philos)
 {
@@ -27,7 +27,7 @@ void	start_simulation(t_philo_pub philos[])
 	pthread_t	thread_var;
 
 	looper = -1;
-	while (++lopper < philos->nbr_of_philos)
+	while (++looper < philos->nbr_of_philos)
 		philos[looper].start_time = &starting_at;
 	starting_at = get_time_ms();
 	looper = -1;

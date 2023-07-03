@@ -1,4 +1,4 @@
-#include "../include/philosophers.h"
+#include "philosophers.h"
 
 void	value_error(char *arg)
 {

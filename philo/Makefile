@@ -6,21 +6,19 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/06/30 17:16:58 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/03 18:00:46 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=philo
-FLAGS=-Wall -Wextra -Werror -g3
-SRCS=philosophers.c \
-	${addprefix sources/, validator.c errors.c get_time_ms.c start_simulation.c} \
-	${addprefix sources/infinite/, infinite_simulation.c} \
-	${addprefix sources/routine/, routine.c}
-	${addprefix utilities/, ft_putstr_fd.c ft_atol.c}
-OBJS=${SRCS:.c=.o}
-HEADER=philosophers.h
-SHELL:=/bin/bash
+FLAGS=-Wall -Wextra -Werror -pthread -g3
+SRCS=${addprefix utilities/, ft_atol.c ft+putstr_fd.c get_time_ms.c} \
+	${addprefix sources/routine, dead.c lunch.c routine_start.c snooze.c think.c} \
+	${addprefix sources/infinite/, infinite_simulation.c set_philos_infinite.c} \
+	${addprefix sources/, errors.c philosophers.c start_simulation.c validator.c}
+OBJS=${addprefix objects/, ${notdir ${SRCS:.c=.o}}}
+HEADER=include/philosophers.h
 
 # COLORS ======================================================================
 RED=\033[31m
@@ -41,27 +39,25 @@ all: ${NAME}
 		printf "${GREEN}${NAME} is up to date!${RESET}\n"; \
 	fi
 
-${NAME}: ${OBJS}
+objects:
+	@mkdir -p objects
+
+${NAME}: objects ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
-	@cc ${FLAGS} -I. ${OBJS} -o $@
+	@cc ${FLAGS} -I include ${OBJS} -o $@
 	@printf "${GREEN}${NAME} created!${RESET}\n"
 	@exit 0
 
-%.o: %.c
+objects/%.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
-	@cc ${FLAGS} -I. -c $< -o $@
+	@cc ${FLAGS} -I include -c $< -o $@
 
 fclean: clean
 	@rm -fr ${NAME}
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
-	@${foreach file, ${OBJS}, \
-		if [ -f ${file} ]; then \
-			printf "${YELLOW}Removing object file: ${MAGENTA}${notdir ${file}}${RESET}\n"; \
-			rm -fr ${file}; \
-		fi; \
-	}
+	@rm -fr objects
 	@printf "${YELLOW}Objects removed!${RESET}\n"
 
 re: fclean ${NAME}

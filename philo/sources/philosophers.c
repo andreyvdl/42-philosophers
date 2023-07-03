@@ -1,4 +1,4 @@
-#include "include/philosophers.h"
+#include "philosophers.h"
 
 /*
 todo: get argv as input - nbr_philos lifetime lunch_time amimir [meals]

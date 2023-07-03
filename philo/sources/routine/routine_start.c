@@ -1,4 +1,4 @@
-#include "../../include/philosophers.h"
+#include "philosophers.h"
 
 static void	should_eat(t_philo_pub philo[])
 {
@@ -18,25 +18,23 @@ static void	should_think(t_philo_pub philo[])
 	think(philos);
 }
 
-void	*routine(void *arg)
+void	*routine(t_philo_pub *philo)
 {
-	t_philo_pub	philo[1];
-
-	philo = (t_philo_pub *)arg;
 	if (philo->id % 2 == 1)
 		usleep(1000);
-	pthread_mutex_lock(philo->print_mutex);
-	if (philo->private.last_meal < philo->(*start_time) - get_time_ms())
-		philo_dead(philo);
+	am_i_dead(philo);
 	while (philo->private.philo_meals != 0)
 	{
 		pthread_mutex_lock(philo->state_mutex);
 		if (philo->private.state == E_EATING)
 			should_eat(philo);
+		am_i_dead(philo);
 		else if (philo->private.state == E_SLEEPING)
 			should_sleep(philo);
+		am_i_dead(philo);
 		else if (philo->private.state == E_THINKING)
 			should_think(philo);
+		am_i_dead(philo);
 	}
 	exit(0);
 }

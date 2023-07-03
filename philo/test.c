@@ -1,4 +1,4 @@
-#include "include/philosophers.h"
+#include "philosophers.h"
 
 /* explicação 
 * pthread_create: cria uma thread e a manda para a função;
@@ -68,7 +68,7 @@ int	main(void)
 }
 */
 
-/* mutex 
+//mutex 
 typedef struct s_tester {
 	pthread_mutex_t	mutex;
 	unsigned int	garfos;
@@ -93,6 +93,7 @@ int	main(void)
 	t_tester	tester;
 
 	tester = (t_tester){PTHREAD_MUTEX_INITIALIZER, 0};
+	tester.mutex = (pthread_mutex_tPTHREAD_MUTEX_INITIALIZER;
 	for (int i = 0; i < 3; i++)
 		pthread_create(&thread_id[i], NULL, teste, (void *)&tester);
 	for (int i = 0; i < 3; i++)
@@ -102,7 +103,6 @@ int	main(void)
 	printf("eu vejo %u garfos\n", tester.garfos);
 	return (0);
 }
-*/
 
 /* gettimeofday 
 int	main(void)
