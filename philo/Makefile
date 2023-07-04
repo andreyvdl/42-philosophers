@@ -6,18 +6,21 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/03 18:00:46 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/04 17:59:35 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -pthread -g3
-SRCS=${addprefix utilities/, ft_atol.c ft+putstr_fd.c get_time_ms.c} \
-	${addprefix sources/routine, dead.c lunch.c routine_start.c snooze.c think.c} \
-	${addprefix sources/infinite/, infinite_simulation.c set_philos_infinite.c} \
-	${addprefix sources/, errors.c philosophers.c start_simulation.c validator.c}
-OBJS=${addprefix objects/, ${notdir ${SRCS:.c=.o}}}
+SRC=${addprefix utilities/, ft_atol.c ft_putstr_fd.c get_time_ms.c} \
+	${addprefix sources/routine/, dead.c lunch.c routine_start.c snooze.c \
+		think.c} \
+	${addprefix sources/infinite/, infinite_simulation.c \
+		set_philos_infinite.c} \
+	${addprefix sources/, errors.c philosophers.c start_simulation.c \
+		validator.c}
+OBJS=${SRC:.c=.o}
 HEADER=include/philosophers.h
 
 # COLORS ======================================================================
@@ -39,16 +42,13 @@ all: ${NAME}
 		printf "${GREEN}${NAME} is up to date!${RESET}\n"; \
 	fi
 
-objects:
-	@mkdir -p objects
-
-${NAME}: objects ${OBJS}
+${NAME}: ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
 	@cc ${FLAGS} -I include ${OBJS} -o $@
 	@printf "${GREEN}${NAME} created!${RESET}\n"
 	@exit 0
 
-objects/%.o: %.c
+%.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
 	@cc ${FLAGS} -I include -c $< -o $@
 
@@ -57,7 +57,7 @@ fclean: clean
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
-	@rm -fr objects
+	@rm -fr ${OBJS}
 	@printf "${YELLOW}Objects removed!${RESET}\n"
 
 re: fclean ${NAME}

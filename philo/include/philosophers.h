@@ -24,7 +24,7 @@
 /* Philo text --------------------------------------------------------------- */
 
 # define PHILO_EAT "\e[1;32m %d %d is eating\n\e[0m"
-# define PHILO_RIP "\e[1;31m %d %d died\n\e[0m"
+# define PHILO_RIP "\e[1;31m %ld %ld died\n\e[0m"
 # define PHILO_FORK "\e[1;33m %d %d has taken a fork\n\e[0m"
 # define PHILO_SLEEP "\e[1;36m %d %d is sleeping\n\e[0m"
 # define PHILO_THINK "\e[1;35m %d %d is thinking\n\e[0m"
@@ -115,6 +115,7 @@ time_t	get_time_ms(void);
 void	set_philos_infinite(t_philo_pub philos[], char *argv[]);
 void	start_simulation(t_philo_pub philos[]);
 void	ft_putstr_fd(char *s, int fd);
+void	am_i_dead(t_philo_pub *philo);
 void	infinite_sim(char *argv[]);
 void	finite_sim(char *argv[]);
 void	value_error(char *arg);
