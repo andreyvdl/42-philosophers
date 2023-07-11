@@ -18,24 +18,27 @@ static void	should_think(t_philo_pub philo[])
 	think(philo);
 }
 
-void	*routine(t_philo_pub *philo)
+void	*routine(void *philos)
 {
+	t_philo_pub	*philo;
+
+	philo = (t_philo_pub *)philos;
 	philo->private.last_meal = get_time_ms();
 	if (philo->id % 2 == 1)
 		usleep(1000);
-	am_i_dead(philo);
+	pthread_mutex_lock(philo->state_mutex);
+	memento_mori(philo);
 	while (philo->private.philo_meals != 0)
 	{
 		pthread_mutex_lock(philo->state_mutex);
 		if (philo->private.state == E_EATING)
 			should_eat(philo);
-		am_i_dead(philo);
 		else if (philo->private.state == E_SLEEPING)
 			should_sleep(philo);
-		am_i_dead(philo);
 		else if (philo->private.state == E_THINKING)
 			should_think(philo);
-		am_i_dead(philo);
+		pthread_mutex_lock(philo->state_mutex);
+		memento_mori(philo);
 	}
-	exit(0);
+	return (NIL);
 }

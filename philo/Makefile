@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/04 17:59:35 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/11 13:56:18 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,10 @@
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -pthread -g3
 SRC=${addprefix utilities/, ft_atol.c ft_putstr_fd.c get_time_ms.c} \
-	${addprefix sources/routine/, dead.c lunch.c routine_start.c snooze.c \
-		think.c} \
-	${addprefix sources/infinite/, infinite_simulation.c \
-		set_philos_infinite.c} \
-	${addprefix sources/, errors.c philosophers.c start_simulation.c \
-		validator.c}
+	${addprefix sources/routine/, dead.c lunch.c routine_start.c snooze.c think.c \
+	change_state.c} \
+	${addprefix sources/infinite/, infinite_simulation.c set_philos_infinite.c} \
+	${addprefix sources/, errors.c philosophers.c start_simulation.c validator.c}
 OBJS=${SRC:.c=.o}
 HEADER=include/philosophers.h
 

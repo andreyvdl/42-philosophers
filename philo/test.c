@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "include/philosophers.h"
 
 /* explicação 
 * pthread_create: cria uma thread e a manda para a função;
@@ -68,7 +68,7 @@ int	main(void)
 }
 */
 
-//mutex 
+// mutex 
 typedef struct s_tester {
 	pthread_mutex_t	mutex;
 	unsigned int	garfos;
@@ -80,6 +80,7 @@ void	*teste(void *arg)
 	static int	id = 0;
 
 	tester = (t_tester *)arg;
+	usleep(tester->garfos * 1000);
 	pthread_mutex_lock(&tester->mutex);
 	printf("sou o philo %d e vejo %u garfos\n", id++, tester->garfos);
 	tester->garfos += 2;
@@ -93,14 +94,16 @@ int	main(void)
 	t_tester	tester;
 
 	tester = (t_tester){PTHREAD_MUTEX_INITIALIZER, 0};
-	tester.mutex = (pthread_mutex_tPTHREAD_MUTEX_INITIALIZER;
+	tester.mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
 	for (int i = 0; i < 3; i++)
 		pthread_create(&thread_id[i], NULL, teste, (void *)&tester);
 	for (int i = 0; i < 3; i++)
-		pthread_join(thread_id[i], NULL);
+		pthread_detach(thread_id[i]);
 	for (int i = 0; i < 3; i++)
 		pthread_mutex_destroy(&tester.mutex);
+	pthread_mutex_lock(&tester.mutex);
 	printf("eu vejo %u garfos\n", tester.garfos);
+	pthread_mutex_unlock(&tester.mutex);
 	return (0);
 }
 
@@ -110,11 +113,12 @@ int	main(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	printf("%ldsec %ldus\n", time.tv_sec, time.tv_usec);
+	printf("%ldsec %ldus, somados%ld\n", time.tv_sec, time.tv_usec, time.tv_usec / 1000 + time.tv_sec * 1000);
 	printf("%ldsec->ms %ldus->ms\n", time.tv_sec * 1000, time.tv_usec / 1000);
 	return (0);
 }
 */
+
 
 /* ponteiro 
 typedef struct s_tester {
