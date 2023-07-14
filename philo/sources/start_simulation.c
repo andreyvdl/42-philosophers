@@ -19,13 +19,10 @@ static void	function_name(t_philo_pub philos[], pthread_t ids[])
 		looper = -1;
 		while (++looper < philos->nbr_of_philos)
 		{
-			pthread_mutex_lock(philos->state_mutex);
 			if (philos[looper].private.state == E_DEAD)
 			{
-				pthread_mutex_unlock(philos->state_mutex);
 				detach_and_exit(philos, ids);
 			}
-			pthread_mutex_unlock(philos->state_mutex);
 		}
 	}
 }
