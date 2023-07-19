@@ -23,11 +23,11 @@
 
 /* Philo text --------------------------------------------------------------- */
 
-# define PHILO_EAT "\e[1;32m %ld %d is eating\n\e[0m"
-# define PHILO_RIP "\e[1;31m %ld %d died\n\e[0m"
-# define PHILO_FORK "\e[1;33m %ld %d has taken a fork\n\e[0m"
-# define PHILO_SLEEP "\e[1;36m %ld %d is sleeping\n\e[0m"
-# define PHILO_THINK "\e[1;35m %ld %d is thinking\n\e[0m"
+# define PHILO_EAT "\e[1;32m%ld %d is eating\n\e[0m"
+# define PHILO_RIP "\e[1;31m%ld %d died\n\e[0m"
+# define PHILO_FORK "\e[1;33m%ld %d has taken a fork\n\e[0m"
+# define PHILO_SLEEP "\e[1;36m%ld %d is sleeping\n\e[0m"
+# define PHILO_THINK "\e[1;35m%ld %d is thinking\n\e[0m"
 
 /* Errors ------------------------------------------------------------------- */
 
@@ -97,11 +97,11 @@ typedef struct s_philo_public {
 	t_pth_mutex	*print_mutex;
 	t_pth_mutex	*state_mutex;
 	t_philo_prv	private;
-	ssize_t		*lifetime;
-	ssize_t		*lunch_time;
-	ssize_t		*snooze_time;
-	time_t		*start_time;
 	uint8_t		*table_forks;
+	time_t		start_time;
+	ssize_t		lifetime;
+	ssize_t		lunch_time;
+	ssize_t		snooze_time;
 	uint8_t		id;
 	uint8_t		nbr_of_philos;
 }	t_philo_pub;

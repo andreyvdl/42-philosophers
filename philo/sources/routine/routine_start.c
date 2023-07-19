@@ -26,7 +26,6 @@ void	*routine(void *philos)
 	philo->private.last_meal = get_time_ms();
 	if (philo->id % 2 == 1)
 		usleep(1000);
-	pthread_mutex_lock(philo->state_mutex);
 	memento_mori(philo);
 	while (philo->private.philo_meals != 0)
 	{
@@ -37,7 +36,8 @@ void	*routine(void *philos)
 			should_sleep(philo);
 		else if (philo->private.state == E_THINKING)
 			should_think(philo);
-		pthread_mutex_lock(philo->state_mutex);
+		else
+			pthread_mutex_unlock(philo->state_mutex);
 		memento_mori(philo);
 	}
 	return (NIL);

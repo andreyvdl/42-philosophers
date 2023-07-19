@@ -27,19 +27,18 @@ static void	function_name(t_philo_pub philos[], pthread_t ids[])
 			}
 			pthread_mutex_unlock(philos->state_mutex);
 		}
+		usleep(1000);
 	}
 }
 
 void	start_simulation(t_philo_pub philos[])
 {
-	time_t		starting_at;
 	uint8_t		looper;
 	pthread_t	thread_id[MAX_PHILOS];
 
 	looper = -1;
 	while (++looper < philos->nbr_of_philos)
-		philos[looper].start_time = &starting_at;
-	starting_at = get_time_ms();
+		philos[looper].start_time = get_time_ms();
 	looper = -1;
 	while (++looper < philos->nbr_of_philos)
 		pthread_create(&thread_id[looper], NULL, &routine, &philos[looper]);
