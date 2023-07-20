@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../include/philosophers.h"
 
 /*
 DONE: get argv as input - nbr_philos lifetime lunch_time amimir [meals]
@@ -31,5 +31,5 @@ int	main(int argc, char *argv[])
 		select_simulation(argc, argv + 1);
 	else
 		argc_error();
-	exit(0);
+	return (0);
 }

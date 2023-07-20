@@ -24,14 +24,12 @@ static bool	check_eat_death(t_philo_pub philo[])
 			pthread_mutex_unlock(philo->forks_mutex);
 			print_eat(philo);
 			usleep((philo->lunch_time - diff_to_die) * 1000);
-			memento_mori(philo);
 			return (true);
 		}
 		else
 		{
 			pthread_mutex_unlock(philo->forks_mutex);
 			usleep((philo->lunch_time - diff_to_die) * 1000);
-			memento_mori(philo);
 			return (true);
 		}
 	}
@@ -53,8 +51,11 @@ void	lunch(t_philo_pub philo[])
 		pthread_mutex_lock(philo->forks_mutex);
 		*(philo->table_forks) += 2;
 		pthread_mutex_unlock(philo->forks_mutex);
-		change_state(philo, E_SLEEPING);
 		--philo->private.philo_meals;
+		if (philo->private.philo_meals == 0)
+			change_state(philo, E_FINISHED);
+		else
+			change_state(philo, E_SLEEPING);
 		return ;
 	}
 	pthread_mutex_unlock(philo->forks_mutex);

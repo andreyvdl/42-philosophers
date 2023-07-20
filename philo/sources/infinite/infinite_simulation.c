@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../../include/philosophers.h"
 
 void	infinite_sim(char *argv[])
 {
@@ -6,10 +6,12 @@ void	infinite_sim(char *argv[])
 
 	if (values_are_valid(argv))
 	{
-		set_philos_infinite(philos, argv);
+		if (set_philos_infinite(philos, argv) == false)
+			return ;
+		if (set_times_infinite(argv, philos) == false)
+			return ;
+		if (set_mutexes_infinite(philos) == false)
+			return ;
 		start_simulation(philos);
-		exit(0);
 	}
-	else
-		exit(22);
 }

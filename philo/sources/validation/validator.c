@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../../include/philosophers.h"
 
 static bool	bigger_than_max(char *arg)
 {

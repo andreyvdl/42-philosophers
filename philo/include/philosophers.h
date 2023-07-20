@@ -54,12 +54,14 @@ typedef pthread_mutex_t	t_pth_mutex;
  * @param E_EATING The philosopher should eat;
  * @param E_SLEEPING The philosopher should sleep;
  * @param E_THINKING The philosopher should think;
+ * @param E_FINISHED The philosopher has finished eating;
  */
 typedef enum e_philo_state {
 	E_DEAD = -1,
 	E_EATING,
 	E_SLEEPING,
-	E_THINKING
+	E_THINKING,
+	E_FINISHED
 }	t_state;
 
 /**
@@ -72,7 +74,6 @@ typedef enum e_philo_state {
  */
 typedef struct s_philo_private {
 	t_state	state;
-	uint8_t	philo_forks;
 	size_t	philo_meals;
 	time_t	last_meal;
 }	t_philo_prv;
@@ -84,10 +85,10 @@ typedef struct s_philo_private {
  * @param *print_mutex The print mutex;
  * @param *state_mutex The state mutex;
  * @param private The philosopher's private data;
- * @param *lifetime The time the philosopher has to eat;
- * @param *lunch_time The time that the philo has to finish eating;
- * @param *snooze_time The time that the philo has to sleep;
- * @param *start_time The time when the simulation started;
+ * @param lifetime The time the philosopher has to eat;
+ * @param lunch_time The time that the philo has to finish eating;
+ * @param snooze_time The time that the philo has to sleep;
+ * @param start_time The time when the simulation started;
  * @param table_forks The number of forks on the table;
  * @param id The philosopher's id;
  * @param nbr_of_philos The number of philosophers;
@@ -97,24 +98,24 @@ typedef struct s_philo_public {
 	t_pth_mutex	*print_mutex;
 	t_pth_mutex	*state_mutex;
 	t_philo_prv	private;
-	uint8_t		*table_forks;
+	int16_t		*table_forks;
 	time_t		start_time;
 	ssize_t		lifetime;
 	ssize_t		lunch_time;
 	ssize_t		snooze_time;
-	uint8_t		id;
-	uint8_t		nbr_of_philos;
+	int16_t		id;
+	int16_t		nbr_of_philos;
 }	t_philo_pub;
 
 /* Functions ================================================================ */
 
+bool	set_philos_infinite(t_philo_pub philos[], char *argv[]);
 bool	values_are_valid(char *argv[]);
+
 ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
 
 void	*routine(void *philos);
-
-void	set_philos_infinite(t_philo_pub philos[], char *argv[]);
 void	change_state(t_philo_pub philo[], t_state state);
 void	start_simulation(t_philo_pub philos[]);
 void	memento_mori(t_philo_pub *philo);
