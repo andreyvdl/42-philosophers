@@ -63,9 +63,7 @@ bool	values_are_valid(char *argv[])
 	{
 		if (found_something_wrong(*argv))
 		{
-			write(STDERR_FILENO, ERR_INPUT_WRONG, sizeof(ERR_INPUT_WRONG));
-			ft_putstr_fd(*argv, STDERR_FILENO);
-			write(STDERR_FILENO, CLOSE_ERR_INPUT, sizeof(CLOSE_ERR_INPUT));
+			value_error(*argv);
 			return (false);
 		}
 		++argv;

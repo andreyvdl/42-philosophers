@@ -31,6 +31,7 @@
 
 /* Errors ------------------------------------------------------------------- */
 
+# define ERR_MUTEX "\e[1;31mphilo: mutex error\e[0m\n"
 # define ERR_MALLOC "\e[1;31mphilo: malloc error\e[0m\n"
 # define ERR_NBR_ARGS "\e[1;31mphilo: wrong number of arguments\e[0m\n"
 # define EXEMPLE_INPUT "usage: \e[1;32m./philo\e[0m \
@@ -116,6 +117,7 @@ ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
 
 void	*routine(void *philos);
+void	set_times_infinite(char *argv[], t_philo_pub philos[]);
 void	change_state(t_philo_pub philo[], t_state state);
 void	start_simulation(t_philo_pub philos[]);
 void	memento_mori(t_philo_pub *philo);
@@ -127,6 +129,7 @@ void	infinite_sim(char *argv[]);
 void	finite_sim(char *argv[]);
 void	value_error(char *arg);
 void	malloc_error(void);
+void	mutex_error(void);
 void	argc_error(void);
 
 #endif

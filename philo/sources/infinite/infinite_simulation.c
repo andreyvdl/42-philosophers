@@ -6,10 +6,9 @@ void	infinite_sim(char *argv[])
 
 	if (values_are_valid(argv))
 	{
-		if (set_philos_infinite(philos, argv) == false)
+		if (set_philos_infinite(philos, argv++) == false)
 			return ;
-		if (set_times_infinite(argv, philos) == false)
-			return ;
+		set_times_infinite(argv, philos);
 		if (set_mutexes_infinite(philos) == false)
 			return ;
 		start_simulation(philos);

@@ -1,4 +1,9 @@
-#include "philosophers.h"
+#include "../../include/philosophers.h"
+
+void	mutex_error(void)
+{
+	write(STDERR_FILENO, ERR_MUTEX, sizeof(ERR_MUTEX));
+}
 
 void	value_error(char *arg)
 {
