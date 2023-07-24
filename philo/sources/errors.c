@@ -1,22 +1,19 @@
-#include "philosophers.h"
+#include "../include/philosophers.h"
 
 void	value_error(char *arg)
 {
-	write(STDERR_FILENO, ERR_INPUT_WRONG, sizeof(ERR_INPUT_WRONG));
+	ft_putstr_fd(ERR_INPUT_WRONG, STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
-	write(STDERR_FILENO, CLOSE_ERR_INPUT, sizeof(CLOSE_ERR_INPUT));
-	exit(22);
+	ft_putstr_fd(CLOSE_ERR_INPUT, STDERR_FILENO);
 }
 
 void	malloc_error(void)
 {
-	write(STDERR_FILENO, ERR_MALLOC, sizeof(ERR_MALLOC));
-	exit(12);
+	ft_putstr_fd(ERR_MALLOC, STDERR_FILENO);
 }
 
 void	argc_error(void)
 {
-	write(STDERR_FILENO, ERR_NBR_ARGS, sizeof(ERR_NBR_ARGS));
-	write(STDERR_FILENO, EXEMPLE_INPUT, sizeof(EXEMPLE_INPUT));
-	exit(22);
+	ft_putstr_fd(ERR_NBR_ARGS, STDERR_FILENO);
+	ft_putstr_fd(EXEMPLE_INPUT, STDERR_FILENO);
 }

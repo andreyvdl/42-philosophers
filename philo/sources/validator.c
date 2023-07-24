@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../include/philosophers.h"
 
 static bool	bigger_than_max(char *arg)
 {
@@ -63,9 +63,9 @@ bool	values_are_valid(char *argv[])
 	{
 		if (found_something_wrong(*argv))
 		{
-			write(STDERR_FILENO, ERR_INPUT_WRONG, sizeof(ERR_INPUT_WRONG));
+			ft_putstr_fd(ERR_INPUT_WRONG, STDERR_FILENO);
 			ft_putstr_fd(*argv, STDERR_FILENO);
-			write(STDERR_FILENO, CLOSE_ERR_INPUT, sizeof(CLOSE_ERR_INPUT));
+			ft_putstr_fd(CLOSE_ERR_INPUT, STDERR_FILENO);
 			return (false);
 		}
 		++argv;
