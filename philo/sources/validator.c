@@ -1,4 +1,6 @@
 #include "../include/philosophers.h"
+#include <stdbool.h>
+#include <stddef.h>
 
 static bool	bigger_than_max(char *arg)
 {
@@ -57,11 +59,31 @@ static bool	found_something_wrong(char *arg)
 	return (false);
 }
 
+static bool	conversion_error(char *arg)
+{
+	static bool	first_time = true;
+	ssize_t		nbr;
+
+	nbr = ft_atol(arg);
+	if (first_time)
+	{
+		first_time = false;
+		if (nbr < 1 || nbr > 200)
+			return (true);
+	}
+	else
+	{
+		if (nbr < 0 || nbr > TIME_MAX)
+			return (true);
+	}
+	return (false);
+}
+
 bool	values_are_valid(char *argv[])
 {
 	while (*argv != NIL)
 	{
-		if (found_something_wrong(*argv))
+		if (found_something_wrong(*argv) || conversion_error(*argv))
 		{
 			ft_putstr_fd(ERR_INPUT_WRONG, STDERR_FILENO);
 			ft_putstr_fd(*argv, STDERR_FILENO);

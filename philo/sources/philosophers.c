@@ -18,7 +18,7 @@ TODO: read pdf better
 static void	select_simulation(int argc, char *argv[])
 {
 	if (argc == 4)
-		infinite_sim(argv);
+		infinite_simulation(argv);
 	else
 		(void)argc;
 		// finite_sim(argv);

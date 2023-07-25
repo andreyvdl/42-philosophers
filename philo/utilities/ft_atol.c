@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../include/philosophers.h"
 
 ssize_t	ft_atol(const char *str)
 {
