@@ -1,7 +1,6 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-#include <bits/pthreadtypes.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -45,6 +44,22 @@ number_of_philosophers: from 0 to 200\n\
 
 /* Types ==================================================================== */
 
+/**
+ * @brief Structure of a philosopher
+ * 
+ * @param *m_my_fork Mutex of the left fork
+ * @param *m_next_fork Mutex of the right fork
+ * @param *m_print Mutex of the print
+ * @param *m_time Mutex of the time
+ * @param *m_meals Mutex of the meals
+ * @param *m_getter Mutex of the getter
+ * @param meals Number of meals
+ * @param lifetime Time to die
+ * @param lunch_time Time to eat
+ * @param snooze_time Time to sleep
+ * @param starting Time of the start
+ * @param id Id of the philosopher
+ */
 typedef struct s_philo
 {
 	pthread_mutex_t	*m_my_fork;
@@ -52,24 +67,28 @@ typedef struct s_philo
 	pthread_mutex_t	*m_print;
 	pthread_mutex_t	*m_time;
 	pthread_mutex_t	*m_meals;
-	
+	pthread_mutex_t	*m_getter;
 	size_t			meals;
 	ssize_t			lifetime;
 	ssize_t			lunch_time;
 	ssize_t			snooze_time;
+	ssize_t			starting;
 	int16_t			id;
 }	t_philo;
 
 /* Functions ================================================================ */
 
 ssize_t	ft_atol(const char *str);
-
 time_t	get_time_ms(void);
-
 void	ft_putstr_fd(char *s, int fd);
+
+void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
+void	infinite_simulation(char *argv[], uint16_t nbr_philos);
+
 void	value_error(char *arg);
 void	malloc_error(void);
 void	argc_error(void);
+
 
 bool	values_are_valid(char *argv[]);
 

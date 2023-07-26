@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/11 13:56:18 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/26 00:06:53 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ fclean: clean
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
-	@rm -fr ${OBJS}
+	@rm -fr bin
 	@printf "${YELLOW}Objects removed!${RESET}\n"
 
 re: fclean ${NAME}

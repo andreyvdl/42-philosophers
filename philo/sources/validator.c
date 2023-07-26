@@ -1,6 +1,4 @@
 #include "../include/philosophers.h"
-#include <stdbool.h>
-#include <stddef.h>
 
 static bool	bigger_than_max(char *arg)
 {

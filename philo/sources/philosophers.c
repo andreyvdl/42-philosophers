@@ -17,11 +17,14 @@ TODO: read pdf better
 
 static void	select_simulation(int argc, char *argv[])
 {
-	if (argc == 4)
-		infinite_simulation(argv);
-	else
-		(void)argc;
-		// finite_sim(argv);
+	if (values_are_valid(argv))
+	{
+		if (argc == 4)
+			infinite_simulation(argv + 1, ft_atol(*argv));
+		else
+			(void)argc;
+			// finite_sim(argv);
+	}
 }
 
 int	main(int argc, char *argv[])
