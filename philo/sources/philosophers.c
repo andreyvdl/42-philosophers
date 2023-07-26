@@ -9,21 +9,32 @@ DONE:	sec to ms is (sec * 1000)
 DONE:	us->ms + sec->ms is perfect ms
 TODO: read pdf better
 
-%: make a bool for the forks , if taken is false, else true
 %: left fork is a pointer to the fork of the next philosopher
 !: time_t is a signed long int
 ?: optimization
 */
 
+static void	make_the_l(ssize_t	t)
+{
+	printf(PHILO_FORK, 0L, 1);
+	usleep(t * 1000);
+	printf(PHILO_RIP, t, 1);
+}
+
 static void	select_simulation(int argc, char *argv[])
 {
 	if (values_are_valid(argv))
 	{
-		if (argc == 4)
-			infinite_simulation(argv + 1, ft_atol(*argv));
+		if (ft_atol(*argv) > 1)
+		{
+			if (argc == 4)
+				infinite_simulation(argv + 1, ft_atol(*argv));
+			else
+				(void)argc;
+				// finite_sim(argv);
+		}
 		else
-			(void)argc;
-			// finite_sim(argv);
+			make_the_l(ft_atol(*(argv + 1)));
 	}
 }
 

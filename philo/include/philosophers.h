@@ -31,14 +31,16 @@
 
 /* Errors ------------------------------------------------------------------- */
 
-# define ERR_MALLOC "\e[1;31mphilo: malloc error\e[0m\n"
 # define ERR_NBR_ARGS "\e[1;31mphilo: wrong number of arguments\e[0m\n"
 # define EXEMPLE_INPUT "usage: \e[1;32m./philo\e[0m \
 \e[1;4;3;31mnumber_of_philosophers\e[0m \e[1;4;3;31mtime_to_die\e[0m \
 \e[1;4;3;31mtime_to_eat\e[0m \e[1;4;3;31mtime_to_sleep\e[0m \
 [\e[1;4;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n\n\
-number_of_philosophers: from 0 to 200\n\
-"
+number_of_philosophers: from 1 to 200\n\
+time_to_die: bigger than 0\n\
+time_to_eat: bigger than 0\n\
+time_to_sleep: bigger than 0\n\
+number_of_times_each_philosopher_must_eat: bigger than 0\n\n"
 # define ERR_INPUT_WRONG "\e[1;31mphilo: this input is wrong `"
 # define CLOSE_ERR_INPUT "`\e[0m\n"
 
@@ -69,27 +71,33 @@ typedef struct s_philo
 	pthread_mutex_t	*m_meals;
 	pthread_mutex_t	*m_getter;
 	size_t			meals;
-	ssize_t			lifetime;
-	ssize_t			lunch_time;
-	ssize_t			snooze_time;
-	ssize_t			starting;
+	time_t			lifetime;
+	time_t			lunch_time;
+	time_t			snooze_time;
+	time_t			starting;
 	int16_t			id;
 }	t_philo;
 
 /* Functions ================================================================ */
 
+/* Utilities ---------------------------------------------------------------- */
+
 ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
 void	ft_putstr_fd(char *s, int fd);
 
+/* Infinite ----------------------------------------------------------------- */
+
 void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
 void	infinite_simulation(char *argv[], uint16_t nbr_philos);
 
-void	value_error(char *arg);
-void	malloc_error(void);
-void	argc_error(void);
+/* Finite ------------------------------------------------------------------- */
 
+/* General ------------------------------------------------------------------ */
 
+void	set_mutex(t_philo philos[], int16_t nbr_philos);
 bool	values_are_valid(char *argv[]);
+void	value_error(char *arg);
+void	argc_error(void);
 
 #endif
