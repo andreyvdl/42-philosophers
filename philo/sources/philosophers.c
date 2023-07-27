@@ -14,27 +14,36 @@ TODO: read pdf better
 ?: optimization
 */
 
-static void	make_the_l(ssize_t	t)
+static void	*memento_mori(void *arg)
 {
+	time_t	lifetime;
+
+	lifetime = (time_t)arg;
 	printf(PHILO_FORK, 0L, 1);
-	usleep(t * 1000);
-	printf(PHILO_RIP, t, 1);
+	usleep(lifetime * 1000);
+	printf(PHILO_RIP, lifetime, 1);
+	return (NIL);
+}
+
+static void	accept_your_fate(ssize_t lifetime)
+{
+	pthread_t	philo;
+
+	pthread_create(&philo, NIL, &memento_mori, (void *)lifetime);
+	pthread_join(philo, NIL);
 }
 
 static void	select_simulation(int argc, char *argv[])
 {
 	if (values_are_valid(argv))
 	{
-		if (ft_atol(*argv) > 1)
-		{
-			if (argc == 4)
-				infinite_simulation(argv + 1, ft_atol(*argv));
-			else
-				(void)argc;
-				// finite_sim(argv);
-		}
+		if (ft_atol(*argv) == 1)
+			accept_your_fate(ft_atol(argv[1]));
+		else if (argc == 4)
+			infinite_simulation(argv + 1, ft_atol(*argv));
 		else
-			make_the_l(ft_atol(*(argv + 1)));
+			(void)argc;
+			// finite_sim(argv);
 	}
 }
 
