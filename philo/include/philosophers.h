@@ -70,11 +70,11 @@ typedef struct s_philo
 	pthread_mutex_t	*m_time;
 	pthread_mutex_t	*m_meals;
 	pthread_mutex_t	*m_getter;
+	time_t			*starting;
 	size_t			meals;
 	time_t			lifetime;
 	time_t			lunch_time;
 	time_t			snooze_time;
-	time_t			starting;
 	int16_t			id;
 }	t_philo;
 

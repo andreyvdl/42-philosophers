@@ -12,6 +12,7 @@ void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos)
 		philos[i].id = i + 1;
 		philos[i].meals = -1;
 		philos[i].lifetime = time;
+		philos[i].starting = philos->starting;
 	}
 	time = ft_atol(argv[1]);
 	i = -1;

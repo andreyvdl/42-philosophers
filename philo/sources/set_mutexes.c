@@ -5,6 +5,7 @@ static void	only_one_for_these(t_philo philos[], int16_t nbr_philos)
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*time;
 	pthread_mutex_t	*meals;
+	pthread_mutex_t	*getter;
 	int16_t			i;
 
 	print = malloc(sizeof(pthread_mutex_t));
@@ -13,12 +14,15 @@ static void	only_one_for_these(t_philo philos[], int16_t nbr_philos)
 	pthread_mutex_init(time, NULL);
 	meals = malloc(sizeof(pthread_mutex_t));
 	pthread_mutex_init(meals, NULL);
+	getter = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(getter, NULL);
 	i = -1;
 	while (++i < nbr_philos)
 	{
 		philos[i].m_print = print;
 		philos[i].m_time = time;
 		philos[i].m_meals = meals;
+		philos[i].m_getter = getter;
 	}
 }
 
