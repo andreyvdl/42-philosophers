@@ -70,11 +70,12 @@ typedef struct s_philo
 	pthread_mutex_t	*m_time;
 	pthread_mutex_t	*m_meals;
 	pthread_mutex_t	*m_getter;
-	time_t			*starting;
 	size_t			meals;
 	time_t			lifetime;
 	time_t			lunch_time;
 	time_t			snooze_time;
+	time_t			last_meal;
+	time_t			starting;
 	int16_t			id;
 }	t_philo;
 
@@ -84,20 +85,38 @@ typedef struct s_philo
 
 ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
+bool	*get_died(void);
 void	ft_putstr_fd(char *s, int fd);
+
 
 /* Infinite ----------------------------------------------------------------- */
 
 void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
-void	infinite_simulation(char *argv[], uint16_t nbr_philos);
+void	infinite_simulation(char *argv[], int16_t nbr_philos);
 
 /* Finite ------------------------------------------------------------------- */
 
+/* Routine ------------------------------------------------------------------ */
+
+bool	has_meals(t_philo *philo);
+void	print_action(t_philo *philo, char *str);
+void	update_time(t_philo *philo);
+void	drop_forks(t_philo *philo);
+void	take_forks(t_philo *philo);
+void	snooze(t_philo *philo);
+void	think(t_philo *philo);
+void	eat(t_philo *philo);
+void	*routine(void *arg);
+
 /* General ------------------------------------------------------------------ */
 
-void	set_mutex(t_philo philos[], int16_t nbr_philos);
 bool	values_are_valid(char *argv[]);
+bool	nobody_died(t_philo *philo);
+void	start_simulation(t_philo philos[], int16_t nbr_philos);
+void	destroy_mutexes(t_philo philos[], int16_t nbr_philos);
+void	set_mutex(t_philo philos[], int16_t nbr_philos);
 void	value_error(char *arg);
 void	argc_error(void);
+
 
 #endif

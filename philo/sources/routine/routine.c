@@ -8,7 +8,7 @@ void	*routine(void *arg)
 	update_time(philo);
 	if (philo->id % 2 == 1)
 		usleep(100);
-	while (has_meals(philo) && nobody_died())
+	while (has_meals(philo) && nobody_died(philo))
 	{
 		take_forks(philo);
 		eat(philo);

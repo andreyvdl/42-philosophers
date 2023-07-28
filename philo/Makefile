@@ -6,18 +6,37 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/26 23:17:27 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/28 17:03:31 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -pthread -g3
-SRC=${addprefix sources/, errors.c philosophers.c set_mutexes.c validator.c} \
-	${addprefix sources/infinite/, infinite_simulation.c set_philos_infinite.c}
-OBJS=${addprefix bin/, ${notdir ${SRC:.c=.o}}}
+SRC=infinite_simulation.c \
+	set_basic_infinite.c \
+	eat.c \
+	fork.c \
+	print_action.c \
+	routine.c \
+	snooze.c \
+	think.c \
+	update_time.c \
+	ft_atol.c \
+	ft_putstr_fd.c \
+	get_time_ms.c \
+	getter.c \
+	destroy_mutexes.c \
+	died.c \
+	errors.c \
+	has_meals.c \
+	philosophers.c \
+	set_mutexes.c \
+	start_simulation.c \
+	validator.c
+OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
-VPATH=sources:sources/infinite:bin
+VPATH=sources:sources/infinite:sources/routine:sources/utilities:bin
 
 # COLORS ======================================================================
 RED=\033[31m

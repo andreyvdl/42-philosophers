@@ -43,5 +43,6 @@ void	set_mutex(t_philo philos[], int16_t nbr_philos)
 	while (++i < nbr_philos)
 		philos[i].m_next_fork = philos[i + 1].m_my_fork;
 	philos[i].m_next_fork = philos->m_my_fork;
+	++nbr_philos;
 	only_one_for_these(philos, nbr_philos);
 }

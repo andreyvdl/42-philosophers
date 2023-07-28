@@ -1,6 +1,6 @@
 #include "../../include/philosophers.h"
 
-void	infinite_simulation(char *argv[], uint16_t nbr_philos)
+void	infinite_simulation(char *argv[], int16_t nbr_philos)
 {
 	t_philo	philos[MAX_PHILOS];
 
