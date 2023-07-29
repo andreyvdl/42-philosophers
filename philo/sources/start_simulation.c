@@ -15,6 +15,9 @@ static bool	has_died(t_philo *philos)
 	if (philos->lifetime + philos->last_meal < get_time_ms())
 	{
 		set_died(philos);
+		pthread_mutex_lock(philos->m_print);
+		printf(PHILO_RIP, get_time_ms() - philos->starting, philos->id);
+		pthread_mutex_unlock(philos->m_print);
 		ret = true;
 	}
 	else
@@ -40,6 +43,7 @@ static void	panopticon(t_philo philos[], uint16_t nbr_philos)
 			else if (has_died(&philos[i]))
 				break ;
 		}
+		usleep(100);
 	}
 }
 

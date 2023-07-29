@@ -3,5 +3,5 @@
 void	think(t_philo *philo)
 {
 	print_action(philo, PHILO_THINK);
-	usleep(100);
+	usleep(1);
 }
