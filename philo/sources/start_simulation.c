@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_simulation.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:03:37 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:03:40 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/philosophers.h"
 
 static void	set_died(t_philo philos[])
@@ -58,7 +70,7 @@ void	start_simulation(t_philo philos[], int16_t nbr_philos)
 	i = -1;
 	while (++i < nbr_philos)
 		pthread_create(&thread[i], NIL, &routine, (void *)&philos[i]);
-	sleep(1);
+	usleep(100);
 	panopticon(philos, nbr_philos);
 	i = -1;
 	while (++i < nbr_philos)

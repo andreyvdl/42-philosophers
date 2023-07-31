@@ -1,18 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:03:18 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:03:27 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/philosophers.h"
-
-/*
-DONE: get argv as input - nbr_philos lifetime lunch_time amimir [meals]
-DONE: learn about pthreads and mutex in C - on test.c
-DONE: learn basic math to convert time
-DONE:	μs to ms is (μs / 1000)
-DONE:	sec to ms is (sec * 1000)
-DONE:	us->ms + sec->ms is perfect ms
-TODO: read pdf better
-
-%: left fork is a pointer to the fork of the next philosopher
-!: time_t is a signed long int
-?: optimization
-*/
 
 static void	*memento_mori(void *arg)
 {
@@ -42,8 +40,7 @@ static void	select_simulation(int argc, char *argv[])
 		else if (argc == 4)
 			infinite_simulation(argv + 1, ft_atol(*argv));
 		else
-			(void)argc;
-			// finite_sim(argv);
+			finite_simulation(argv + 1, ft_atol(*argv));
 	}
 }
 

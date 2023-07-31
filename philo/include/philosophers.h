@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:01:25 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:01:29 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
@@ -12,7 +24,6 @@
 # include <stdbool.h>
 
 /* Define =================================================================== */
-
 /* Macros ------------------------------------------------------------------- */
 
 # define NIL 0x0
@@ -80,7 +91,6 @@ typedef struct s_philo
 }	t_philo;
 
 /* Functions ================================================================ */
-
 /* Utilities ---------------------------------------------------------------- */
 
 ssize_t	ft_atol(const char *str);
@@ -88,13 +98,15 @@ time_t	get_time_ms(void);
 bool	*get_died(void);
 void	ft_putstr_fd(char *s, int fd);
 
-
 /* Infinite ----------------------------------------------------------------- */
 
 void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
 void	infinite_simulation(char *argv[], int16_t nbr_philos);
 
 /* Finite ------------------------------------------------------------------- */
+
+void	set_basic_finite(t_philo philos[], char *argv[], int16_t nbr_philos);
+void	finite_simulation(char *argv[], int16_t nbr_philos);
 
 /* Routine ------------------------------------------------------------------ */
 
@@ -117,6 +129,5 @@ void	destroy_mutexes(t_philo philos[], int16_t nbr_philos);
 void	set_mutex(t_philo philos[], int16_t nbr_philos);
 void	value_error(char *arg);
 void	argc_error(void);
-
 
 #endif

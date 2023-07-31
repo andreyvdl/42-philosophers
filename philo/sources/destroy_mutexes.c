@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy_mutexes.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:03:05 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:03:59 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/philosophers.h"
 
 void	destroy_mutexes(t_philo philos[], int16_t nbr_philos)
@@ -18,5 +30,4 @@ void	destroy_mutexes(t_philo philos[], int16_t nbr_philos)
 	free(philos->m_meals);
 	pthread_mutex_destroy(philos->m_print);
 	free(philos->m_print);
-
 }

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getter.c                                           :+:      :+:    :+:   */
+/*   finite_simulation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:02:43 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/31 13:02:44 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/31 13:01:32 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:01:34 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-bool	*get_died(void)
+void	finite_simulation(char *argv[], int16_t nbr_philos)
 {
-	static bool	died = false;
+	t_philo	philos[MAX_PHILOS];
 
-	return (&died);
+	set_basic_finite(philos, argv, nbr_philos);
+	set_mutex(philos, nbr_philos);
+	start_simulation(philos, nbr_philos);
 }

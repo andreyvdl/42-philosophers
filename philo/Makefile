@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/28 17:03:31 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/31 12:14:01 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,12 @@ SRC=infinite_simulation.c \
 	philosophers.c \
 	set_mutexes.c \
 	start_simulation.c \
-	validator.c
+	validator.c \
+	finite_simulation.c \
+	set_basic_finite.c
 OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
-VPATH=sources:sources/infinite:sources/routine:sources/utilities:bin
+VPATH=sources:sources/infinite:sources/routine:sources/utilities:sources/finite
 
 # COLORS ======================================================================
 RED=\033[31m

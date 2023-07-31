@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_basic_infinite.c                               :+:      :+:    :+:   */
+/*   set_basic_finite.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:01:49 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/31 13:01:51 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/31 13:01:38 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:01:40 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos)
+void	set_basic_finite(t_philo philos[], char *argv[], int16_t nbr_philos)
 {
-	ssize_t	time;
+	ssize_t	aux;
 	int16_t	i;
 
-	time = ft_atol(*argv);
+	aux = ft_atol(*argv);
 	i = -1;
 	while (++i < nbr_philos)
 	{
 		philos[i].id = i + 1;
-		philos[i].meals = -1;
-		philos[i].lifetime = time;
+		philos[i].lifetime = aux;
 	}
-	time = ft_atol(argv[1]);
+	aux = ft_atol(argv[1]);
 	i = -1;
 	while (++i < nbr_philos)
-		philos[i].lunch_time = time;
-	time = ft_atol(argv[2]);
+		philos[i].lunch_time = aux;
+	aux = ft_atol(argv[2]);
 	i = -1;
 	while (++i < nbr_philos)
-		philos[i].snooze_time = time;
+		philos[i].snooze_time = aux;
+	aux = ft_atol(argv[3]);
+	i = -1;
+	while (++i < nbr_philos)
+		philos[i].meals = aux;
 }
