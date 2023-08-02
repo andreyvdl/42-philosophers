@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:37 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/31 13:03:40 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/02 11:49:38 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	start_simulation(t_philo philos[], int16_t nbr_philos)
 
 	i = -1;
 	while (++i < nbr_philos)
+	{
 		philos[i].starting = get_time_ms();
+		philos[i].last_meal = philos[i].starting;
+	}
 	i = -1;
 	while (++i < nbr_philos)
 		pthread_create(&thread[i], NIL, &routine, (void *)&philos[i]);
