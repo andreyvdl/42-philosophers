@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:18 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/02 15:34:00 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:22:24 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	accept_your_fate(ssize_t lifetime)
 
 static void	select_simulation(int argc, char *argv[])
 {
+	unlink_semaphores();
 	if (values_are_valid(argv))
 	{
 		if (ft_atol(*argv) == 1)

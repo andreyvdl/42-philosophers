@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philosophers_bonus.h                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 16:02:30 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/02 16:09:06 by adantas-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PHILOSOPHERS_BONUS_H
 # define PHILOSOPHERS_BONUS_H
 
@@ -20,6 +8,7 @@
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <semaphore.h>
+# include <fcntl.h>
 
 # include <stdint.h>
 # include <stdbool.h>
@@ -32,6 +21,7 @@
 # define MAX_PHILOS 200
 # define SSIZE_MAX_LEN 19
 # define SSIZE_MAX_STR "9223372036854775807"
+# define RNW 0644
 
 /* Philo text --------------------------------------------------------------- */
 
