@@ -6,11 +6,11 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:42 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/01 16:01:50 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:16:30 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers_bonus.h"
+#include "../include_bonus/philosophers_bonus.h"
 
 static bool	bigger_than_max(char *arg)
 {

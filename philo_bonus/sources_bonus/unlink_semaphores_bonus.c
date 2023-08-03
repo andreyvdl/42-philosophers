@@ -1,4 +1,4 @@
-#include "../include/philosophers_bonus.h"
+#include "../include_bonus/philosophers_bonus.h"
 
 void	unlink_semaphores(void)
 {

@@ -6,11 +6,11 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:18 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/02 23:22:24 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:16:30 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers_bonus.h"
+#include "../include_bonus/philosophers_bonus.h"
 
 static void	accept_your_fate(ssize_t lifetime)
 {

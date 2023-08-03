@@ -1,6 +1,6 @@
-#include "../../include/philosophers_bonus.h"
+#include "../include_bonus/philosophers_bonus.h"
 
-void	set_sempahores_infinite(t_philo *philos, int16_t nbr_philos)
+void	set_sempahores(t_philo philos[], int16_t nbr_philos)
 {
 	int16_t	i;
 
@@ -13,8 +13,8 @@ void	set_sempahores_infinite(t_philo *philos, int16_t nbr_philos)
 	philos->sem_time = malloc(sizeof(sem_t));
 	philos->sem_time = sem_open("/time", O_CREAT, RNW, 1);
 	philos->sem_meals = malloc(sizeof(sem_t));
-	philos->sem_meals = sem_open("/meals", O_CREAT, RNW, -1);
-	i = -1;
+	philos->sem_meals = sem_open("/meals", O_CREAT, RNW, 1);
+	i = 0;
 	while (++i < nbr_philos)
 	{
 		philos[i].sem_fork = philos->sem_fork;

@@ -4,7 +4,11 @@ FLAGS=-Wall -Wextra -Werror -g3
 SRC=
 OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
-VPATH=sources:sources/infinite:sources/routine:sources/utilities:sources/finite
+VPATH=sources_bonus\
+	:sources_bonus/infinite_bonus\
+	:sources_bonus/routine_bonus\
+	:sources_bonus/utilities_bonus\
+	:sources_bonus/finite_bonus
 
 # COLORS ======================================================================
 RED=\033[31m

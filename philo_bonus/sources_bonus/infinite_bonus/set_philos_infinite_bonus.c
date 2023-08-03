@@ -1,4 +1,4 @@
-#include "../../include/philosophers_bonus.h"
+#include "../../include_bonus/philosophers_bonus.h"
 
 void	set_philos_infinite(t_philo philos[], char *argv[], int16_t nbr_philos)
 {

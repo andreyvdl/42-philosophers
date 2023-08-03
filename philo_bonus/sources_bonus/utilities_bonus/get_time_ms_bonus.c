@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_bonus.c                                     :+:      :+:    :+:   */
+/*   get_time_ms_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:03:11 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/01 16:02:07 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/31 13:02:38 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/03 16:16:30 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers_bonus.h"
+#include "../../include_bonus/philosophers_bonus.h"
 
-void	value_error(char *arg)
+time_t	get_time_ms(void)
 {
-	ft_putstr_fd(ERR_INPUT_WRONG, STDERR_FILENO);
-	ft_putstr_fd(arg, STDERR_FILENO);
-	ft_putstr_fd(CLOSE_ERR_INPUT, STDERR_FILENO);
-}
+	struct timeval	time;
 
-void	argc_error(void)
-{
-	ft_putstr_fd(ERR_NBR_ARGS, STDERR_FILENO);
-	ft_putstr_fd(EXEMPLE_INPUT, STDERR_FILENO);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
