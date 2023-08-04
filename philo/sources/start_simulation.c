@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:37 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/02 11:49:38 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:01:31 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_died(t_philo philos[])
 	pthread_mutex_unlock(philos->m_getter);
 }
 
-static bool	has_died(t_philo *philos)
+static bool	has_died(t_philo philos[])
 {
 	bool	ret;
 
