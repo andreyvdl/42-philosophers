@@ -3,7 +3,7 @@
 static void	snooze(t_philo *philo)
 {
 	print_action(philo, PHILO_SLEEP);
-	usleep(philo->time_to_sleep * 1000);
+	usleep(philo->snooze_time * 1000);
 }
 
 static void	think(t_philo *philo)

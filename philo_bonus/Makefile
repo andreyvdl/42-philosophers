@@ -1,7 +1,28 @@
 # VARS ========================================================================
 NAME=philo_bonus
-FLAGS=-Wall -Wextra -Werror -g3
-SRC=
+FLAGS=-Wall -Wextra -Werror -g3 -pthread
+SRC=finite_simulation_bonus.c \
+	set_philos_finite_bonus.c \
+	infinite_simulation_bonus.c \
+	set_philos_infinite_bonus.c \
+	eat_bonus.c \
+	forks_bonus.c \
+	print_action_bonus.c \
+	routine_bonus.c \
+	ft_atol_bonus.c \
+	ft_putstr_fd_bonus.c \
+	get_time_ms_bonus.c \
+	getter_bonus.c \
+	close_semaphores_bonus.c \
+	errors_bonus.c \
+	free_semaphores_bonus.c \
+	has_meal_bonus.c \
+	nobody_died_bonus.c \
+	philosophers_bonus.c \
+	set_semaphores_bonus.c \
+	start_simulation_bonus.c \
+	unlink_semaphores_bonus.c \
+	validator_bonus.c
 OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
 VPATH=sources_bonus\
@@ -31,7 +52,7 @@ all: ${NAME}
 
 ${NAME}: bin ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
-	@cc ${FLAGS} -I include ${OBJS} -o $@
+	@cc ${FLAGS} -I include_bonus ${OBJS} -o $@
 	@printf "${GREEN}${NAME} created!${RESET}\n"
 	@exit 0
 
@@ -40,7 +61,7 @@ bin:
 
 bin/%.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
-	@cc ${FLAGS} -I include -c $< -o $@
+	@cc ${FLAGS} -I include_bonus -c $< -o $@
 
 fclean: clean
 	@rm -fr ${NAME}

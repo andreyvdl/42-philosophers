@@ -1,6 +1,6 @@
 #include "../include_bonus/philosophers_bonus.h"
 
-void	set_sempahores(t_philo philos[], int16_t nbr_philos)
+void	set_semaphores(t_philo philos[], int16_t nbr_philos)
 {
 	int16_t	i;
 

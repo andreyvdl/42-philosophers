@@ -9,15 +9,15 @@ static void	update_meal_time(t_philo *philo)
 
 static void	update_meal_count(t_philo *philo)
 {
-	sem_wait(philo->sem_meal);
+	sem_wait(philo->sem_meals);
 	--philo->meals;
-	sem_post(philo->sem_meal);
+	sem_post(philo->sem_meals);
 }
 
 void	eat(t_philo *philo)
 {
 	update_meal_time(philo);
 	print_action(philo, PHILO_EAT);
-	usleep(philo->time_to_eat * 1000);
+	usleep(philo->lunch_time * 1000);
 	update_meal_count(philo);
 }
