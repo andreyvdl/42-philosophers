@@ -2,10 +2,7 @@
 
 void	print_action(t_philo *philo, char *str)
 {
-	if (nobody_died(philo))
-	{
-		sem_wait(philo->sem_printf);
-		printf(str, get_time_ms() - philo->starting, philo->id);
-		sem_post(philo->sem_printf);
-	}
+	sem_wait(philo->sem_printf);
+	printf(str, get_time_ms() - philo->starting, philo->id);
+	sem_post(philo->sem_printf);
 }

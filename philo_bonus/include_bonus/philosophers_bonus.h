@@ -52,9 +52,6 @@ number_of_times_each_philosopher_must_eat: bigger than 0\n\n"
  * @brief Structure of a philosopher
  * @param sem_fork Semaphore of forks
  * @param sem_printf Semaphore of printf
- * @param sem_getter Semaphore of getter
- * @param sem_time Semaphore of time
- * @param sem_meals Semaphore of meals
  * @param meals Number of meals
  * @param lifetime Time to die
  * @param lunch_time Time to eat
@@ -66,9 +63,6 @@ typedef struct s_philo
 {
 	sem_t	*sem_fork;
 	sem_t	*sem_printf;
-	sem_t	*sem_getter;
-	sem_t	*sem_time;
-	sem_t	*sem_meals;
 	size_t	meals;
 	time_t	lifetime;
 	time_t	lunch_time;
@@ -100,6 +94,7 @@ void	set_philos_finite(t_philo philos[], char *argv[], int16_t nbr_philos);
 
 void	eat(t_philo *philo);
 void	routine(t_philo *philo);
+void	am_i_alive(t_philo *philo);
 void	drop_forks(t_philo *philo);
 void	take_forks(t_philo *philo);
 void	print_action(t_philo *philo, char *str);
@@ -112,7 +107,6 @@ void	unlink_semaphores(void);
 bool	has_meals(t_philo *philo);
 bool	nobody_died(t_philo *philo);
 bool	values_are_valid(char *argv[]);
-void	free_semaphores(t_philo *philo);
 void	close_semaphores(t_philo *philo);
 void	set_semaphores(t_philo philos[], int16_t nbr_philos);
 void	start_simulation(t_philo philos[], int16_t nbr_philos);

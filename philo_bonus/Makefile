@@ -15,14 +15,12 @@ SRC=finite_simulation_bonus.c \
 	getter_bonus.c \
 	close_semaphores_bonus.c \
 	errors_bonus.c \
-	free_semaphores_bonus.c \
-	has_meal_bonus.c \
-	nobody_died_bonus.c \
 	philosophers_bonus.c \
 	set_semaphores_bonus.c \
 	start_simulation_bonus.c \
 	unlink_semaphores_bonus.c \
-	validator_bonus.c
+	validator_bonus.c \
+	am_i_alive_bonus.c
 OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
 VPATH=sources_bonus\

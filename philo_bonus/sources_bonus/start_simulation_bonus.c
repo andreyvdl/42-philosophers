@@ -1,56 +1,34 @@
 #include "../include_bonus/philosophers_bonus.h"
 
-static void	kill_philos(t_philo philos[])
+static void	kill_philos(int16_t nbr_philos, pid_t pids[], int16_t pos)
 {
-	sem_wait(philos->sem_getter);
-	*get_died() = true;
-	sem_post(philos->sem_getter);
+	while (++pos < nbr_philos)
+		kill(pids[pos], SIGKILL);
 }
 
-static bool	has_died(t_philo philos[], int16_t nbr_philos)
-{
-	bool	ret;
-
-	sem_wait(philos->sem_time);
-	if (philos->lifetime + philos->last_meal < get_time_ms())
-	{
-		kill_philos(philos, nbr_philos);
-		sem_wait(philos->sem_printf);
-		printf(PHILO_RIP, get_time_ms() - philos->starting, philos->id);
-		sem_post(philos->sem_printf);
-		ret = true;
-	}
-	else
-		ret = false;
-	sem_post(philos->sem_time);
-	return (ret);
-}
-
-static void	panopticon(t_philo philos[], int16_t nbr_philos)
+static int	wait_for_kill(int16_t nbr_philos, pid_t pids[])
 {
 	int16_t	i;
-	int16_t	finished;
+	int		status;
 
-	finished = 0;
-	while (finished != nbr_philos && nobody_died(philos))
+	i = -1;
+	while (++i < nbr_philos)
 	{
-		i = -1;
-		finished = 0;
-		while (++i < nbr_philos)
+		waitpid(-1, &status, 0);
+		if (WIFEXITED(status) && WEXITSTATUS(status) == EXIT_FAILURE)
 		{
-			if (has_meals(&philos[i]) == false)
-				finished++;
-			else if (has_died(&philos[i], nbr_philos))
-				break ;
+			kill_philos(nbr_philos, pids, i);
+			return (EXIT_FAILURE);
 		}
-		usleep(100);
 	}
+	return (EXIT_SUCCESS);
 }
 
 void	start_simulation(t_philo philos[], int16_t nbr_philos)
 {
 	pid_t	pids[MAX_PHILOS];
 	int16_t	i;
+	int		status;
 
 	i = -1;
 	while (++i < nbr_philos)
@@ -66,9 +44,8 @@ void	start_simulation(t_philo philos[], int16_t nbr_philos)
 			routine(&philos[i]);
 	}
 	usleep(100);
-	panopticon(philos, nbr_philos, pids);
+	status = wait_for_kill(nbr_philos, pids);
 	close_semaphores(philos);
-	free_semaphores(philos);
 	unlink_semaphores();
-	exit(0);
+	exit(status);
 }
