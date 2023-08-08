@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"*.embeddedhtml": "html",
-		"stddef.h": "c",
-		"philosophers.h": "c"
-	},
-	"dimmer.enabled": false
-}
