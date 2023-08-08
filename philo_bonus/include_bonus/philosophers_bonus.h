@@ -92,7 +92,6 @@ void	set_philos_finite(t_philo philos[], char *argv[], int16_t nbr_philos);
 
 /* Routine ------------------------------------------------------------------ */
 
-void	eat(t_philo *philo);
 void	routine(t_philo *philo);
 void	am_i_alive(t_philo *philo);
 void	drop_forks(t_philo *philo);

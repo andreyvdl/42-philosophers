@@ -5,7 +5,6 @@ SRC=finite_simulation_bonus.c \
 	set_philos_finite_bonus.c \
 	infinite_simulation_bonus.c \
 	set_philos_infinite_bonus.c \
-	eat_bonus.c \
 	forks_bonus.c \
 	print_action_bonus.c \
 	routine_bonus.c \
