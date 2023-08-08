@@ -42,12 +42,14 @@
 
 ## Execution
 
+On the philo folder
 ```sh
-$> make
-$> ./philo nbr_of_philosophers time_to_die time_to_eat time_to_sleep [nbr_of_meals]
+$ make
+$ ./philo nbr_of_philosophers time_to_die time_to_eat time_to_sleep [nbr_of_meals]
 ```
 
+On the philo_bonus folder
 ```sh
-$> make bonus
-$> ./philo_bonus nbr_of_philosophers time_to_die time_to_eat time_to_sleep [nbr_of_meals]
+$ make bonus
+$ ./philo_bonus nbr_of_philosophers time_to_die time_to_eat time_to_sleep [nbr_of_meals]
 ```
