@@ -6,20 +6,39 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:20:11 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/11 13:56:18 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/31 12:14:01 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=philo
 FLAGS=-Wall -Wextra -Werror -pthread -g3
-SRC=${addprefix utilities/, ft_atol.c ft_putstr_fd.c get_time_ms.c} \
-	${addprefix sources/routine/, dead.c lunch.c routine_start.c snooze.c think.c \
-	change_state.c} \
-	${addprefix sources/infinite/, infinite_simulation.c set_philos_infinite.c} \
-	${addprefix sources/, errors.c philosophers.c start_simulation.c validator.c}
-OBJS=${SRC:.c=.o}
+SRC=infinite_simulation.c \
+	set_basic_infinite.c \
+	eat.c \
+	fork.c \
+	print_action.c \
+	routine.c \
+	snooze.c \
+	think.c \
+	update_time.c \
+	ft_atol.c \
+	ft_putstr_fd.c \
+	get_time_ms.c \
+	getter.c \
+	destroy_mutexes.c \
+	died.c \
+	errors.c \
+	has_meals.c \
+	philosophers.c \
+	set_mutexes.c \
+	start_simulation.c \
+	validator.c \
+	finite_simulation.c \
+	set_basic_finite.c
+OBJS=${addprefix bin/, ${SRC:.c=.o}}
 HEADER=include/philosophers.h
+VPATH=sources:sources/infinite:sources/routine:sources/utilities:sources/finite
 
 # COLORS ======================================================================
 RED=\033[31m
@@ -40,13 +59,16 @@ all: ${NAME}
 		printf "${GREEN}${NAME} is up to date!${RESET}\n"; \
 	fi
 
-${NAME}: ${OBJS}
+${NAME}: bin ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
 	@cc ${FLAGS} -I include ${OBJS} -o $@
 	@printf "${GREEN}${NAME} created!${RESET}\n"
 	@exit 0
 
-%.o: %.c
+bin:
+	@mkdir -p bin
+
+bin/%.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
 	@cc ${FLAGS} -I include -c $< -o $@
 
@@ -55,7 +77,7 @@ fclean: clean
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
-	@rm -fr ${OBJS}
+	@rm -fr bin
 	@printf "${YELLOW}Objects removed!${RESET}\n"
 
 re: fclean ${NAME}

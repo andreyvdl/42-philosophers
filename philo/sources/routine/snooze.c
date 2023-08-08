@@ -1,30 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   snooze.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:02:11 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/08 14:37:02 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/philosophers.h"
 
-static void	print_sleep(t_philo_pub philo[])
+void	snooze(t_philo *philo)
 {
-	pthread_mutex_lock(philo->print_mutex);
-	printf(PHILO_SLEEP, get_time_ms() - philo->start_time, philo->id);
-	pthread_mutex_unlock(philo->print_mutex);
-}
-
-static void	check_sleep_death(t_philo_pub philo[])
-{
-	time_t	diff_to_die;
-
-	diff_to_die = (philo->private.last_meal + philo->lifetime)
-		- (philo->private.last_meal + philo->snooze_time);
-	if (diff_to_die <= 0)
-	{
-		print_sleep(philo);
-		usleep((philo->snooze_time - diff_to_die));
-		memento_mori(philo);
-	}
-}
-
-void	snooze(t_philo_pub philo[])
-{
-	check_sleep_death(philo);
-	print_sleep(philo);
+	print_action(philo, PHILO_SLEEP);
 	usleep(philo->snooze_time * 1000);
-	change_state(philo, E_THINKING);
 }

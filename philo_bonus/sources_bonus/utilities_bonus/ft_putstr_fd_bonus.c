@@ -1,4 +1,4 @@
-#include "philosophers.h"
+#include "../../include_bonus/philosophers_bonus.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

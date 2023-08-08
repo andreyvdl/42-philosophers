@@ -1,16 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   infinite_simulation.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:01:44 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/08 14:33:31 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/philosophers.h"
 
-void	infinite_sim(char *argv[])
+void	infinite_simulation(char *argv[], int16_t nbr_philos)
 {
-	t_philo_pub	philos[MAX_PHILOS];
+	t_philo	philos[MAX_PHILOS];
 
-	if (values_are_valid(argv))
-	{
-		if (set_philos_infinite(philos, argv++) == false)
-			return ;
-		set_times_infinite(argv, philos);
-		if (set_mutexes_infinite(philos) == false)
-			return ;
-		start_simulation(philos);
-	}
+	set_basic_infinite(philos, argv, nbr_philos);
+	set_mutex(philos, nbr_philos);
+	start_simulation(philos, nbr_philos);
 }

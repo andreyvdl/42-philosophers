@@ -1,24 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:01:25 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/08 14:31:21 by adantas-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILOSOPHERS_BONUS_H
+# define PHILOSOPHERS_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <pthread.h>
 # include <sys/time.h>
+# include <sys/wait.h>
+# include <semaphore.h>
+# include <fcntl.h>
 
 # include <stdint.h>
 # include <stdbool.h>
@@ -31,6 +21,7 @@
 # define MAX_PHILOS 200
 # define SSIZE_MAX_LEN 19
 # define SSIZE_MAX_STR "9223372036854775807"
+# define RNW 0644
 
 /* Philo text --------------------------------------------------------------- */
 
@@ -59,13 +50,8 @@ number_of_times_each_philosopher_must_eat: bigger than 0\n\n"
 
 /**
  * @brief Structure of a philosopher
- * 
- * @param *m_my_fork Mutex of the left fork
- * @param *m_next_fork Mutex of the right fork
- * @param *m_print Mutex of the print
- * @param *m_time Mutex of the time
- * @param *m_meals Mutex of the meals
- * @param *m_getter Mutex of the getter
+ * @param sem_fork Semaphore of forks
+ * @param sem_printf Semaphore of printf
  * @param meals Number of meals
  * @param lifetime Time to die
  * @param lunch_time Time to eat
@@ -75,59 +61,53 @@ number_of_times_each_philosopher_must_eat: bigger than 0\n\n"
  */
 typedef struct s_philo
 {
-	pthread_mutex_t	*m_my_fork;
-	pthread_mutex_t	*m_next_fork;
-	pthread_mutex_t	*m_print;
-	pthread_mutex_t	*m_time;
-	pthread_mutex_t	*m_meals;
-	pthread_mutex_t	*m_getter;
-	size_t			meals;
-	time_t			lifetime;
-	time_t			lunch_time;
-	time_t			snooze_time;
-	time_t			last_meal;
-	time_t			starting;
-	int16_t			id;
+	sem_t	*sem_fork;
+	sem_t	*sem_printf;
+	size_t	meals;
+	time_t	lifetime;
+	time_t	lunch_time;
+	time_t	snooze_time;
+	time_t	last_meal;
+	time_t	starting;
+	int16_t	id;
 }	t_philo;
 
 /* Functions ================================================================ */
 /* Utilities ---------------------------------------------------------------- */
 
-ssize_t	ft_atol(const char *str);
-time_t	get_time_ms(void);
 bool	*get_died(void);
+time_t	get_time_ms(void);
+ssize_t	ft_atol(const char *str);
 void	ft_putstr_fd(char *s, int fd);
 
 /* Infinite ----------------------------------------------------------------- */
 
-void	set_basic_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
 void	infinite_simulation(char *argv[], int16_t nbr_philos);
+void	set_philos_infinite(t_philo philos[], char *argv[], int16_t nbr_philos);
 
 /* Finite ------------------------------------------------------------------- */
 
-void	set_basic_finite(t_philo philos[], char *argv[], int16_t nbr_philos);
 void	finite_simulation(char *argv[], int16_t nbr_philos);
+void	set_philos_finite(t_philo philos[], char *argv[], int16_t nbr_philos);
 
 /* Routine ------------------------------------------------------------------ */
 
-bool	has_meals(t_philo *philo);
-void	print_action(t_philo *philo, char *str);
-void	update_time(t_philo *philo);
+void	routine(t_philo *philo);
+void	am_i_alive(t_philo *philo);
 void	drop_forks(t_philo *philo);
 void	take_forks(t_philo *philo);
-void	snooze(t_philo *philo);
-void	think(t_philo *philo);
-void	eat(t_philo *philo);
-void	*routine(void *arg);
+void	print_action(t_philo *philo, char *str);
 
 /* General ------------------------------------------------------------------ */
 
-bool	values_are_valid(char *argv[]);
-bool	nobody_died(t_philo *philo);
-void	start_simulation(t_philo philos[], int16_t nbr_philos);
-void	destroy_mutexes(t_philo philos[], int16_t nbr_philos);
-void	set_mutex(t_philo philos[], int16_t nbr_philos);
-void	value_error(char *arg);
 void	argc_error(void);
+void	value_error(char *arg);
+void	unlink_semaphores(void);
+bool	has_meals(t_philo *philo);
+bool	nobody_died(t_philo *philo);
+bool	values_are_valid(char *argv[]);
+void	close_semaphores(t_philo *philo);
+void	set_semaphores(t_philo philos[], int16_t nbr_philos);
+void	start_simulation(t_philo philos[], int16_t nbr_philos);
 
 #endif

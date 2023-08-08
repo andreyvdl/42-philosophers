@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:02:19 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/08 14:37:24 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/31 13:02:30 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:02:32 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-void	think(t_philo *philo)
+ssize_t	ft_atol(const char *str)
 {
-	print_action(philo, PHILO_THINK);
-	usleep(500);
+	ssize_t	result;
+
+	result = 0;
+	while ((*str < '0' || *str > '9') && *str != '\0')
+		++str;
+	while (*str >= '0' && *str <= '9')
+		result = (result * 10) + (*str++ - '0');
+	return (result);
 }

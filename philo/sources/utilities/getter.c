@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   think.c                                            :+:      :+:    :+:   */
+/*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 13:02:19 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/08 14:37:24 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/31 13:02:43 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:02:44 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-void	think(t_philo *philo)
+bool	*get_died(void)
 {
-	print_action(philo, PHILO_THINK);
-	usleep(500);
+	static bool	died = false;
+
+	return (&died);
 }

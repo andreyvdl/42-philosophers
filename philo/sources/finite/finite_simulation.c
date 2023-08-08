@@ -1,9 +1,22 @@
-#include "philosophers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   finite_simulation.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 13:01:32 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/31 13:01:34 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	finite_sim(char *argv[])
+#include "../../include/philosophers.h"
+
+void	finite_simulation(char *argv[], int16_t nbr_philos)
 {
-	if (values_are_valid(argv))
-		exit(0);
-	else
-		exit(22);
+	t_philo	philos[MAX_PHILOS];
+
+	set_basic_finite(philos, argv, nbr_philos);
+	set_mutex(philos, nbr_philos);
+	start_simulation(philos, nbr_philos);
 }
