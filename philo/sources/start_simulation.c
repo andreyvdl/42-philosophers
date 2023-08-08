@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:37 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/03 11:01:31 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:57:22 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	panopticon(t_philo philos[], uint16_t nbr_philos)
 			else if (has_died(&philos[i]))
 				break ;
 		}
-		usleep(100);
+		usleep(500);
 	}
 }
 
