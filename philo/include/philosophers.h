@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:01:25 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/08 14:31:21 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:57:09 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ typedef struct s_philo
 /* Functions ================================================================ */
 /* Utilities ---------------------------------------------------------------- */
 
+void	ft_putstr_fd(char *s, int fd);
 ssize_t	ft_atol(const char *str);
 time_t	get_time_ms(void);
 bool	*get_died(void);
-void	ft_putstr_fd(char *s, int fd);
 
 /* Infinite ----------------------------------------------------------------- */
 
@@ -110,11 +110,11 @@ void	finite_simulation(char *argv[], int16_t nbr_philos);
 
 /* Routine ------------------------------------------------------------------ */
 
-bool	has_meals(t_philo *philo);
 void	print_action(t_philo *philo, char *str);
 void	update_time(t_philo *philo);
 void	drop_forks(t_philo *philo);
 void	take_forks(t_philo *philo);
+bool	has_meals(t_philo *philo);
 void	snooze(t_philo *philo);
 void	think(t_philo *philo);
 void	eat(t_philo *philo);
@@ -122,11 +122,11 @@ void	*routine(void *arg);
 
 /* General ------------------------------------------------------------------ */
 
-bool	values_are_valid(char *argv[]);
-bool	nobody_died(t_philo *philo);
 void	start_simulation(t_philo philos[], int16_t nbr_philos);
 void	destroy_mutexes(t_philo philos[], int16_t nbr_philos);
 void	set_mutex(t_philo philos[], int16_t nbr_philos);
+bool	values_are_valid(char *argv[]);
+bool	nobody_died(t_philo *philo);
 void	value_error(char *arg);
 void	argc_error(void);
 
