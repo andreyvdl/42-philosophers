@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start_simulation_bonus.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 12:42:01 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/11 12:42:04 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include_bonus/philosophers_bonus.h"
 
 static void	kill_philos(int16_t nbr_philos, pid_t pids[], int16_t pos)

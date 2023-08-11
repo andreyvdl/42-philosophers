@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_philos_finite_bonus.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 12:39:43 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/11 12:39:44 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include_bonus/philosophers_bonus.h"
 
 void	set_philos_finite(t_philo philos[], char *argv[], int16_t nbr_philos)

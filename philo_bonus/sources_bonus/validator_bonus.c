@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:42 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/04 16:46:54 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:42:36 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,7 @@ bool	values_are_valid(char *argv[])
 	{
 		if (found_something_wrong(*argv) || conversion_error(*argv))
 		{
-			ft_putstr_fd(ERR_INPUT_WRONG, STDERR_FILENO);
-			ft_putstr_fd(*argv, STDERR_FILENO);
-			ft_putstr_fd(CLOSE_ERR_INPUT, STDERR_FILENO);
+			value_error(*argv);
 			return (false);
 		}
 		++argv;

@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers_bonus.h                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 12:38:38 by adantas-          #+#    #+#             */
+/*   Updated: 2023/08/11 12:45:04 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPHERS_BONUS_H
 # define PHILOSOPHERS_BONUS_H
 
 # include <stdio.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <semaphore.h>
-# include <fcntl.h>
 
 # include <stdint.h>
 # include <stdbool.h>
@@ -34,7 +46,7 @@
 /* Errors ------------------------------------------------------------------- */
 
 # define ERR_NBR_ARGS "\e[1;31mphilo: wrong number of arguments\e[0m\n"
-# define EXEMPLE_INPUT "usage: \e[1;32m./philo\e[0m \
+# define EXEMPLE_INPUT "usage: \e[1;32m./philo_bonus\e[0m \
 \e[1;4;3;31mnumber_of_philosophers\e[0m \e[1;4;3;31mtime_to_die\e[0m \
 \e[1;4;3;31mtime_to_eat\e[0m \e[1;4;3;31mtime_to_sleep\e[0m \
 [\e[1;4;3;31mnumber_of_times_each_philosopher_must_eat\e[0m]\n\n\

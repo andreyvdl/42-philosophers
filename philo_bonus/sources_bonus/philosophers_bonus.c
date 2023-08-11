@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:03:18 by adantas-          #+#    #+#             */
-/*   Updated: 2023/08/03 16:16:30 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:44:17 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	accept_your_fate(ssize_t lifetime)
 		printf(PHILO_FORK, 0L, 1);
 		usleep(lifetime * 1000);
 		printf(PHILO_RIP, lifetime, 1);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 	waitpid(pid, NULL, 0);
+	exit(EXIT_FAILURE);
 }
 
 static void	select_simulation(int argc, char *argv[])
@@ -47,5 +48,5 @@ int	main(int argc, char *argv[])
 		select_simulation(argc - 1, argv + 1);
 	else
 		argc_error();
-	return (0);
+	exit(EXIT_SUCCESS);
 }
