@@ -1,20 +1,34 @@
 <div align="center">
-	<img src="https://github.com/gawbsouza/42-pdh/blob/main/dark/philosophers_dark.svg"><br>
-	<a href="https://github.com/gawbsouza/42-pdh"><img src="https://github.com/gawbsouza/42-pdh/blob/main/badge/42pdh_badge.svg"></a>
+	<img src="https://github.com/gawbsouza/42-pdh/blob/main/dark/philosophers_dark.svg">
+	<br>
+	<a href="https://github.com/gawbsouza/42-pdh">
+		<img src="https://github.com/gawbsouza/42-pdh/blob/main/badge/42pdh_badge.svg">
+	</a>
 </div>
 
 ---
 <table>
 	<tr>
-		<td style="font-weight:bold">Program Name</td>
-		<td style="font-weight:bold">Files</td>
-		<td style="font-weight:bold">Makefile</td>
-		<td style="font-weight:bold">Functions</td>
-		<td style="font-weight:bold">Score</td>
+		<th style="font-weight:bold">
+			Program Name
+		</th>
+		<th style="font-weight:bold">
+			Files
+		</th>
+		<th style="font-weight:bold">
+			Makefile
+		</th>
+		<th style="font-weight:bold">
+			Functions
+		</th>
+		<th style="font-weight:bold">
+			Score
+		</th>
 	</tr>
 	<tr>
 		<td>
-			philo<br>
+			philo
+			<br>
 			philo_bonus
 		</td>
 		<td>
@@ -26,11 +40,14 @@
 		<td>
 			memset, printf, malloc, free, write, usleep, gettimeofday,
 			pthread_create, pthread_detach, pthread_join, pthread_mutex_init,
-			pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock<br>
-			fork, kill, exit, waitpid, sem_open, sem_close, sem_post, sem_wait,
-			sem_unlink
+			pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock;
+			<br>
+			(fork, kill, exit, waitpid, sem_open, sem_close, sem_post, sem_wait,
+			sem_unlink)
 		</td>
-		<td>0/100</td>
+		<td>
+			125/100
+		</td>
 	</tr>
 </table>
 
