@@ -70,3 +70,7 @@ On the philo_bonus folder
 $ make bonus
 $ ./philo_bonus nbr_of_philosophers time_to_die time_to_eat time_to_sleep [nbr_of_meals]
 ```
+
+## Demo
+
+https://github.com/user-attachments/assets/4526d104-e839-418c-ad37-2c61d2a59a95
